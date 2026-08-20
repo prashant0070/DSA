@@ -1,9 +1,13 @@
-# OOP + DSA in Java
+# OOP + DSA + SDET interview prep (Java)
 
-A practice curriculum: you learn object-oriented programming **by building data structures and algorithms as real classes**, not as a pile of static methods.
+A practice curriculum: OOP and DSA **by building structures as classes**, plus **SDET revision** (framework architecture, tools, behavioral).
 
 **Language:** Java 17+  
-**Current phase:** `00-oop-foundations`
+**Master map:** [CURRICULUM.md](CURRICULUM.md) — all tracks and status  
+**Current phase:** `01-linear-structures` — **[START.md](START.md)** for today's steps  
+**Easy problems:** [practice/easy/](practice/easy/README.md) — 75 stubs **you implement**  
+**Medium problems:** [practice/medium/](practice/medium/README.md) — 25 interview-core stubs **you implement**  
+**SDET revision:** [revision/](revision/README.md) — patterns, framework, tools, SQL, platform, AI
 
 ## How to use this repo
 
@@ -52,7 +56,7 @@ On Windows PowerShell, the `javac` line is the same. Use `\` instead of `/` only
 | Phase | Folder | You build | OOP focus |
 | --- | --- | --- | --- |
 | 0 | `00-oop-foundations` | Small objects: account, shapes, box | Class/object, encapsulation, inheritance vs composition, interfaces, generics, `equals`/`hashCode`, SOLID |
-| 1 | `01-linear-structures` | Dynamic array, linked lists, stack, queue, deque | Inner classes, interfaces, `Iterable` |
+| 1 | `01-linear-structures` | Dynamic array, linked list, stack, queue | **Active** — [NOTES](01-linear-structures/NOTES.md) |
 | 2 | `02-hashing` | Hash map and hash set from scratch | `equals`/`hashCode` contract, composition |
 | 3 | `03-trees` | Binary tree, BST, traversals | Composite, `Comparable` vs `Comparator` |
 | 4 | `04-heaps` | Heap / priority queue | Strategy (`Comparator`) |
@@ -63,7 +67,9 @@ On Windows PowerShell, the `javac` line is the same. Use `\` instead of `/` only
 | 9 | `09-advanced-structures` | Trie, Union-Find, segment tree, LRU cache | Compose simpler objects |
 | 10 | `10-lld-with-dsa` | Cache, rate limiter, scheduler, file tree | SOLID applied to interview design |
 
-Phases 1–10 are added as you complete the previous one. The folders appear when that phase is unlocked.
+Phases 2–10 unlock as you complete the previous one.
+
+**Active:** [01-linear-structures](01-linear-structures/NOTES.md) · [START.md](START.md)
 
 ## Typical lesson (from Phase 1 onward)
 
@@ -71,6 +77,38 @@ Phases 1–10 are added as you complete the previous one. The folders appear whe
 - `src/` — your structure as classes (for example `Stack`, `ArrayStack`, `LinkedStack`)
 - `problems/` — 2–5 problems that **import your classes**, not `java.util` replacements, until the notes say otherwise
 
+## Easy interview questions
+
+Easy **patterns for every common interview topic** live in `practice/easy/` (75 stubs). They are not a full interview set: medium topics (islands, backtracking, variable window, Trie, LRU, …) are listed as out of scope in that README.
+
+See the table and compile commands in [practice/easy/README.md](practice/easy/README.md). `java.util` is allowed on this track.
+
 ## Practice rule
 
 Prefer **your** types over the JDK collections while you are learning that structure. Using `java.util.Stack` to “solve” a stack problem skips the point of this repo.
+
+## SDET interview revision
+
+| Track | Folder | Status |
+| --- | --- | --- |
+| Design patterns | [revision/design-patterns/](revision/design-patterns/) | Done |
+| Framework architecture | [revision/framework-design/](revision/framework-design/) | Done |
+| Automation tools | [revision/automation/](revision/automation/) | Done (5 tools) |
+| HTTP / REST | [revision/api-http/](revision/api-http/) | Done |
+| SQL | [revision/sql/](revision/sql/) | Done |
+| Docker / K8s / AWS | [revision/docker-k8s-aws/](revision/docker-k8s-aws/) | Done |
+| AI / GenAI SDET | [revision/ai-sdet/](revision/ai-sdet/) | Done |
+
+## Learning modules (coding + theory)
+
+| Module | Folder | Status |
+| --- | --- | --- |
+| OOP foundations | [00-oop-foundations/](00-oop-foundations/) | Done |
+| OOP advanced + Q&A | [ADVANCED.md](00-oop-foundations/ADVANCED.md) | Done |
+| Java fundamentals | [01-java-fundamentals/](01-java-fundamentals/) | Done |
+| Big-O / complexity | [02-complexity/](02-complexity/) | Done |
+| DSA patterns | [03-dsa-patterns/](03-dsa-patterns/) | Done |
+| Medium DSA practice | [practice/medium/](practice/medium/) | 25 stubs |
+| Phases 01–10 (build HashMap, Stack, …) | [01-linear-structures/](01-linear-structures/) active · 02–10 coming | Build your own structures |
+
+Full index: [revision/README.md](revision/README.md) · [CURRICULUM.md](CURRICULUM.md)

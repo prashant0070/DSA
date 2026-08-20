@@ -1,7 +1,7 @@
 # Phase 0 — OOP foundations
 
-**Prev:** (start)  
-**Next:** Phase 1 — linear structures (unlock after you finish the problems here)
+**Prev:** [00-oop-foundations](../00-oop-foundations/NOTES.md)  
+**Next:** [01-linear-structures](../01-linear-structures/NOTES.md) — **you are here** · [START.md](../START.md)
 
 This phase is almost no DSA. You are learning the Java object model that every later structure will use. Read this, run `Demo`, then try the three problems.
 
