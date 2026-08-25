@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "javac: java-fundamentals Demo",
+      "type": "shell",
+      "command": "javac -d out src/java/fundamentals/*.java && java -cp out java.fundamentals.Demo",
+      "options": {
+        "cwd": "${workspaceFolder}/01-java-fundamentals"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "javac: practice easy (pick class)",
+      "type": "shell",
+      "command": "javac -d out src/dsa/practice/easy/*.java && echo 'Compiled. Run: java -cp out dsa.practice.easy.CLASSNAME'",
+      "options": {
+        "cwd": "${workspaceFolder}/practice/easy"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "javac: practice medium",
+      "type": "shell",
+      "command": "javac -d out src/dsa/practice/medium/*.java && echo 'Compiled. Run: java -cp out dsa.practice.medium.CLASSNAME'",
+      "options": {
+        "cwd": "${workspaceFolder}/practice/medium"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "javac: practice advanced",
+      "type": "shell",
+      "command": "javac -d out src/dsa/practice/advanced/*.java && echo 'Compiled. Run: java -cp out dsa.practice.advanced.CLASSNAME'",
+      "options": {
+        "cwd": "${workspaceFolder}/practice/advanced"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    },
+    {
+      "label": "javac: OOP Phase 0",
+      "type": "shell",
+      "command": "javac -d out src/dsa/foundations/*.java problems/dsa/foundations/problems/*.java && java -cp out dsa.foundations.Demo",
+      "options": {
+        "cwd": "${workspaceFolder}/00-oop-foundations"
+      },
+      "group": "build",
+      "problemMatcher": ["$javac"]
+    }
+  ]
+}

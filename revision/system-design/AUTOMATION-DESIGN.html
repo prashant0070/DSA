@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Automation system design</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="AUTOMATION-DESIGN.md">Markdown</a>
+      <a href="NOTES.html">HLD basics</a>
+      <a href="PRACTICE.html">Practice</a>
+    </nav>
+    <p class="pill">SDET edge</p>
+    <h1>Automation platforms (HLD)</h1>
+    <p class="lead">Job queue + workers + artifact store + results DB. Hard isolation. Same FAANG clock as classic HLD.</p>
+
+    <h2>Map classic blocks → tests</h2>
+    <table>
+      <tr><th>Classic</th><th>Automation</th></tr>
+      <tr><td>Queue</td><td>Shards / test cases</td></tr>
+      <tr><td>Workers</td><td>Playwright / Appium pods</td></tr>
+      <tr><td>Object store</td><td>Traces, videos, Allure</td></tr>
+      <tr><td>DB</td><td>Run history, flake scores</td></tr>
+    </table>
+
+    <h2>Distributed test runner</h2>
+    <div class="def"><strong>Capacity</strong> concurrency ≈ total_test_seconds / deadline_seconds. 10k × 20s / 1800s ≈ 111 slots → plan ~150 workers.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  CI --> API["Orchestrator"]
+  API --> Q["Queue"]
+  Q --> W1["Worker"]
+  Q --> W2["Worker"]
+  W1 --> S3["Artifacts"]
+  W2 --> S3
+  W1 --> Res["Results DB"]
+  W2 --> Res
+    </pre></div>
+    <p class="caption">Deep dive: time-based sharding, one context per test, lease+heartbeat, upsert results, one retry with trace.</p>
+
+    <h2>Device farm</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Sched["Scheduler"] --> Reg["Device registry"]
+  Reg --> Agent
+  Agent --> Appium
+  Appium --> Device
+    </pre></div>
+    <p>Exclusive locks, health reboots, iOS signing, cleanup, utilization metrics. Build vs buy cloud.</p>
+
+    <h2>Flake analytics</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Workers --> Events
+  Events --> OLTP
+  Events --> Warehouse
+  Warehouse --> Dash["Flake dashboard"]
+    </pre></div>
+
+    <h2>CI orchestrator</h2>
+    <p>PR → smoke; nightly → full; release → P0 + perf gate. DAG, fail-fast, quarantine lane.</p>
+
+    <h2>AI test-gen platform</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Specs --> LLM
+  LLM --> Validate
+  Validate --> Sandbox
+  Sandbox --> Review
+  Review --> Suite
+    </pre></div>
+    <p>Cost caps, prompt versions, golden eval, audit — your differentiator.</p>
+
+    <h2>Answer template</h2>
+    <ol>
+      <li>Clarify channels + deadline</li>
+      <li>Concurrency math</li>
+      <li>API → queue → workers → S3 + DB</li>
+      <li>Isolation + shard + retry</li>
+      <li>Failures + metrics + build/buy</li>
+    </ol>
+    <footer><a href="AUTOMATION-DESIGN.md">Full markdown</a> · <a href="PRACTICE.html">Prompts</a></footer>
+  </div>
+</body>
+</html>

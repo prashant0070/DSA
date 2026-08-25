@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java Collections — examples</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="NOTES.html">Hub</a>
+      <a href="COLLECTIONS.md">Full Markdown</a>
+      <a href="STRINGS.html">Strings</a>
+      <a href="INTERVIEW-QA.html">Q&amp;A</a>
+    </nav>
+    <p class="pill">Deep dive + examples</p>
+    <h1>Java Collections</h1>
+    <p class="lead">Pick a structure → see a working snippet. Complete chapter (LRU, Top-K, CME fixes) is in <a href="COLLECTIONS.md">COLLECTIONS.md</a>.</p>
+
+    <h2>Which one?</h2>
+    <table>
+      <tr><th>Need</th><th>Pick</th><th>Example</th></tr>
+      <tr><td>List with index</td><td>ArrayList</td><td><code>list.get(0)</code></td></tr>
+      <tr><td>Unique</td><td>HashSet</td><td><code>set.add(1)</code></td></tr>
+      <tr><td>Key → value</td><td>HashMap</td><td><code>map.get("Ada")</code></td></tr>
+      <tr><td>Stack / queue</td><td>ArrayDeque</td><td><code>push/pop</code> or <code>offer/poll</code></td></tr>
+      <tr><td>Smallest first</td><td>PriorityQueue</td><td><code>peek()</code> → min</td></tr>
+    </table>
+
+    <h2>ArrayList</h2>
+<pre><code>List&lt;String&gt; names = new ArrayList&lt;&gt;();
+names.add("Ada");
+names.add(0, "Zoe");
+System.out.println(names);        // [Zoe, Ada]
+names.remove(Integer.valueOf?);   // careful: remove(1) is INDEX
+names.remove("Ada");              // by value</code></pre>
+
+    <h2>HashMap — word count</h2>
+<pre><code>Map&lt;String, Integer&gt; freq = new HashMap&lt;&gt;();
+for (String w : List.of("to","be","to")) {
+  freq.merge(w, 1, Integer::sum);
+}
+System.out.println(freq.get("to")); // 2</code></pre>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Key --> Hash["hash"]
+  Hash --> Bucket
+  Bucket --> Eq["equals"]
+    </pre></div>
+
+    <h2>Set — duplicates gone</h2>
+<pre><code>Set&lt;Integer&gt; ids = new HashSet&lt;&gt;();
+ids.add(1); ids.add(1);
+System.out.println(ids); // [1]</code></pre>
+
+    <h2>ArrayDeque — stack &amp; queue</h2>
+<pre><code>Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;();
+stack.push(1); stack.push(2);
+stack.pop(); // 2
+
+Deque&lt;String&gt; q = new ArrayDeque&lt;&gt;();
+q.offer("A"); q.offer("B");
+q.poll(); // A</code></pre>
+
+    <h2>PriorityQueue</h2>
+<pre><code>PriorityQueue&lt;Integer&gt; min = new PriorityQueue&lt;&gt;();
+min.offer(5); min.offer(1); min.offer(3);
+min.peek(); // 1
+// for-each is NOT fully sorted — poll() in a loop to drain sorted</code></pre>
+
+    <h2>Fail-fast CME — fix</h2>
+<pre><code>List&lt;Integer&gt; list = new ArrayList&lt;&gt;(List.of(1,2,3,4));
+// BAD: for (n : list) if (even) list.remove(n);
+list.removeIf(n -&gt; n % 2 == 0); // [1, 3]</code></pre>
+
+    <footer><a href="COLLECTIONS.md">Complete examples in Markdown</a> (LRU, Top-K, TreeMap, ConcurrentHashMap)</footer>
+  </div>
+</body>
+</html>

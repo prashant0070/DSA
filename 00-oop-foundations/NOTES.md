@@ -1,5 +1,7 @@
 # Phase 0 — OOP foundations
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html) — open in Chrome/Safari.
+
 **Prev:** [00-oop-foundations](../00-oop-foundations/NOTES.md)  
 **Next:** [01-linear-structures](../01-linear-structures/NOTES.md) — **you are here** · [START.md](../START.md)
 

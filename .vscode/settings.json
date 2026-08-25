@@ -1,0 +1,43 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.debug.settings.hotCodeReplace": "auto",
+  "java.saveActions.organizeImports": true,
+  "java.import.maven.enabled": false,
+  "java.import.gradle.enabled": false,
+  "java.project.sourcePaths": [
+    "00-oop-foundations/src",
+    "00-oop-foundations/problems",
+    "01-java-fundamentals/src",
+    "01-linear-structures/src",
+    "01-linear-structures/problems",
+    "practice/easy/src",
+    "practice/medium/src",
+    "practice/advanced/src",
+    "revision/design-patterns/src"
+  ],
+  "java.project.outputPath": "bin",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "java.util.Objects.requireNonNull",
+    "java.util.Objects.requireNonNullElse",
+    "java.util.Collections.*"
+  },
+  "files.exclude": {
+    "**/.factorypath": true
+  },
+  "files.watcherExclude": {
+    "**/bin/**": true,
+    "**/out/**": true
+  }
+}

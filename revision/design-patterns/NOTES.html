@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design patterns</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">SDET</p>
+    <h1>Design patterns</h1>
+    <p class="lead">Recurring solutions. In interviews: framework design, and Java OOP. Talk problem → structure → trade-off → SDET example.</p>
+
+    <h2>Creational</h2>
+    <div class="def"><strong>Factory</strong> Hide construction. Test asks for Chrome; factory returns a configured driver. Do not scatter <code>new ChromeDriver()</code>.</div>
+    <div class="def"><strong>Builder</strong> Many optional fields: baseUrl, headless, timeout. Fluent, validated at build.</div>
+    <div class="def"><strong>Singleton</strong> One instance. OK for immutable config. Bad for WebDriver in parallel tests.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Test --> Factory["DriverFactory.create"]
+  Factory --> Chrome
+  Factory --> Firefox
+    </pre></div>
+
+    <h2>Structural</h2>
+    <div class="def"><strong>Decorator</strong> Wrap same interface: logging, screenshot, retry around WebDriver.</div>
+    <div class="def"><strong>Facade</strong> One method hides a messy flow: checkout as guest.</div>
+    <div class="def"><strong>Adapter</strong> Wrap a legacy client to your interface during Selenium → Playwright migration.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Test --> LogDec["LoggingDriver"]
+  LogDec --> Shot["ScreenshotDriver"]
+  Shot --> Real["ChromeDriver"]
+    </pre></div>
+
+    <h2>Behavioral</h2>
+    <div class="def"><strong>Strategy</strong> Swap algorithm: wait policy, retry, browser. Number one pattern in test frameworks. Also Comparator in heaps.</div>
+    <div class="def"><strong>Template Method</strong> BaseTest setup/teardown; subclass fills the varying step. Keep the base thin.</div>
+    <div class="def"><strong>Observer</strong> Listeners on pass/fail: Allure, screenshots.</div>
+
+    <h2>Test architecture (not GoF)</h2>
+    <p>POM: one class per page. Page Component Model: header/modal as pieces. DI: inject driver and config — never static driver.</p>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Test --> LoginPage
+  LoginPage --> Driver
+  Test --> Config
+    </pre></div>
+    <footer>Demos in <code>src/revision/patterns</code> · <a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

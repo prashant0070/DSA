@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DSA patterns</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="../02-complexity/NOTES.html">Complexity</a>
+    </nav>
+    <p class="pill">Problem solving</p>
+    <h1>DSA patterns</h1>
+    <p class="lead">Recognize the clue, apply a template, state complexity. Easy then medium practice in this repo.</p>
+
+    <h2>Picker</h2>
+    <table>
+      <tr><th>Clue</th><th>Try</th></tr>
+      <tr><td>Pair in array</td><td>Hash map, or two pointers if sorted</td></tr>
+      <tr><td>Subarray sum / count</td><td>Prefix + map</td></tr>
+      <tr><td>Longest / shortest substring</td><td>Variable window</td></tr>
+      <tr><td>Sorted / first true</td><td>Binary search</td></tr>
+      <tr><td>Shortest unweighted / levels</td><td>BFS</td></tr>
+      <tr><td>Connected components</td><td>DFS / BFS / Union-Find</td></tr>
+      <tr><td>K largest</td><td>Heap</td></tr>
+      <tr><td>Overlapping ranges</td><td>Sort intervals</td></tr>
+      <tr><td>All combinations</td><td>Backtracking</td></tr>
+      <tr><td>Word prefixes</td><td>Trie</td></tr>
+    </table>
+
+    <h2>Two pointers</h2>
+    <div class="def"><strong>Opposite ends</strong> Sorted pair sum: if too small, left++; if too big, right--.</div>
+    <div class="def"><strong>Same direction</strong> Write-index: MoveZeroes, unique prefix.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  L["left"] --> Arr["sorted array"]
+  Arr --> R["right"]
+    </pre></div>
+
+    <h2>Sliding window</h2>
+    <div class="def"><strong>Fixed k</strong> Add nums[i], drop nums[i-k]. O(n).</div>
+    <div class="def"><strong>Variable</strong> Expand right; shrink left while invalid. Each index enters/leaves once → O(n).</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  L2["left"] --> Win["window"]
+  Win --> R2["right grows"]
+    </pre></div>
+
+    <h2>Prefix sum</h2>
+    <p><code>sum(i..j) = prefix[j+1] - prefix[i]</code>. O(n) build, O(1) query. Subarray sum K: map of prefix counts.</p>
+
+    <h2>Hashing</h2>
+    <p>Complement (Two Sum), frequency, seen set. O(n) time, O(n) space average. Keys need equals/hashCode.</p>
+
+    <h2>Binary search</h2>
+    <p>Halve a sorted range. Also search on the answer: lo..hi on a value, <code>can(x)</code> monotonic. O(log n).</p>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Range["lo ... hi"] --> Mid["mid"]
+  Mid -->|too small| Lo["lo = mid+1"]
+  Mid -->|too big| Hi["hi = mid-1"]
+    </pre></div>
+
+    <h2>Graph / tree</h2>
+    <div class="def"><strong>BFS</strong> Queue, level order, shortest unweighted path. O(V+E).</div>
+    <div class="def"><strong>DFS</strong> Recursion or stack. Components, tree height, islands. O(V+E) or O(cells).</div>
+
+    <h2>Heap, intervals, DP, backtracking</h2>
+    <p>Heap: top K, O(n log k). Intervals: sort by start, merge overlap. 1D DP: ways / pick-skip. 2D DP: grids. Backtracking: choose, recurse, undo.</p>
+    <footer>Full templates in <a href="NOTES.md">NOTES.md</a> · <a href="../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java Strings — examples</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="NOTES.html">Hub</a>
+      <a href="STRINGS.md">Full Markdown</a>
+      <a href="COLLECTIONS.html">Collections</a>
+      <a href="INTERVIEW-QA.html">Q&amp;A</a>
+    </nav>
+    <p class="pill">Deep dive + examples</p>
+    <h1>Java Strings</h1>
+    <p class="lead">Every idea below has a tiny program. For the complete set (anagram, palindrome, reverse words…), open <a href="STRINGS.md">STRINGS.md</a>.</p>
+
+    <h2>Immutability</h2>
+    <div class="def"><strong>In simple words</strong> A String is a locked notebook. “Changing” it means getting a new notebook.</div>
+<pre><code>String s = "hi";
+System.out.println(s.toUpperCase()); // HI
+System.out.println(s);               // hi
+s = s.toUpperCase();
+System.out.println(s);               // HI</code></pre>
+
+    <h2>Pool vs new</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Lit["Literal hello"] --> Pool[String pool]
+  New["new String"] --> Heap[Heap]
+  Intern["intern"] --> Pool
+    </pre></div>
+<pre><code>String a = "hello";
+String b = "hello";
+String c = new String("hello");
+System.out.println(a == b);      // true (typical)
+System.out.println(a == c);      // false
+System.out.println(a.equals(c)); // true — use this</code></pre>
+
+    <h2>StringBuilder (use in loops)</h2>
+<pre><code>// Slow: s += i each time copies everything
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i &lt; 5; i++) sb.append(i);
+System.out.println(sb); // 01234
+
+sb.reverse();
+System.out.println(sb); // 43210</code></pre>
+
+    <h2>Everyday methods</h2>
+<pre><code>String s = "banana";
+s.charAt(1);           // 'a'
+s.substring(1, 4);     // "ana"
+s.indexOf("an");       // 1
+s.contains("nan");     // true
+"a.b".split("\\.");    // ["a","b"] — escape the dot!
+"  hi  ".strip();      // "hi"
+String.join("-", "a","b"); // "a-b"</code></pre>
+
+    <h2>Anagram example</h2>
+<pre><code>// count letters in both; all counters end at 0
+anagram("listen", "silent"); // true
+anagram("rat", "car");       // false</code></pre>
+    <p>Full code for anagram / palindrome / reverse words / first unique → <a href="STRINGS.md">STRINGS.md §7</a></p>
+
+    <footer><a href="STRINGS.md">Complete examples in Markdown</a></footer>
+  </div>
+</body>
+</html>

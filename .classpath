@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+	<classpathentry kind="src" path="00-oop-foundations/problems"/>
+	<classpathentry kind="src" path="00-oop-foundations/src"/>
+	<classpathentry kind="src" path="01-java-fundamentals/src"/>
+	<classpathentry kind="src" path="01-linear-structures/problems"/>
+	<classpathentry kind="src" path="01-linear-structures/src"/>
+	<classpathentry kind="src" path="practice/advanced/src"/>
+	<classpathentry kind="src" path="practice/easy/src"/>
+	<classpathentry kind="src" path="practice/medium/src"/>
+	<classpathentry kind="src" path="revision/design-patterns/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

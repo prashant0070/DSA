@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phase 0 — OOP foundations</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="ADVANCED.md">Advanced</a>
+      <a href="../01-linear-structures/NOTES.html">Next: linear structures</a>
+    </nav>
+
+    <p class="pill">Phase 0</p>
+    <h1>OOP foundations</h1>
+    <p class="lead">You learn the Java object model that every later data structure uses. A class is the blueprint; an object is one instance in memory. This page expands the Markdown notes with diagrams and tighter definitions.</p>
+
+    <ul class="toc">
+      <li><a href="#class">Class and object</a></li>
+      <li><a href="#encap">Encapsulation</a></li>
+      <li><a href="#inherit">Inheritance vs composition</a></li>
+      <li><a href="#abs">Abstract class vs interface</a></li>
+      <li><a href="#poly">Polymorphism</a></li>
+      <li><a href="#gen">Generics</a></li>
+      <li><a href="#eq">equals and hashCode</a></li>
+      <li><a href="#solid">SOLID</a></li>
+      <li><a href="#words">Java word list</a></li>
+    </ul>
+
+    <h2 id="class">1. Class and object</h2>
+    <div class="def">
+      <strong>Definition — class</strong>
+      A class is a named blueprint: fields (state) + methods (behavior) + constructors (how to start valid). It is not data by itself.
+    </div>
+    <div class="def">
+      <strong>Definition — object (instance)</strong>
+      An object is one allocation of that blueprint. <code>new BankAccount("Ada")</code> and <code>new BankAccount("Bob")</code> are two separate objects with their own balances.
+    </div>
+    <div class="def">
+      <strong>Definition — constructor</strong>
+      A special method that runs once at <code>new</code>. Its job is to leave every invariant true. If the owner is blank, throw before the object exists.
+    </div>
+    <div class="def">
+      <strong>Definition — this</strong>
+      The current object. Needed when a parameter has the same name as a field: <code>this.owner = owner</code>.
+    </div>
+
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Class["Class BankAccount"] -->|"new Ada"| ObjA["Object Ada balance 0"]
+  Class -->|"new Bob"| ObjB["Object Bob balance 0"]
+    </pre></div>
+    <p class="caption">One class, two objects. Changing Ada’s balance never changes Bob’s.</p>
+
+<pre><code>BankAccount a = new BankAccount("Ada");
+BankAccount b = new BankAccount("Bob");</code></pre>
+
+    <h2 id="encap">2. Encapsulation and invariants</h2>
+    <div class="def">
+      <strong>Definition — encapsulation</strong>
+      The object owns its data. Fields are <code>private</code>. Callers use methods. That is how you stop <code>account.balanceCents = -50</code>.
+    </div>
+    <div class="def">
+      <strong>Definition — invariant</strong>
+      A rule that must stay true after every public method. BankAccount: balance ≥ 0 and amounts &gt; 0. Counter: <code>0 ≤ value ≤ max</code>. Temperature: never below absolute zero.
+    </div>
+    <div class="def">
+      <strong>Definition — getter vs setter</strong>
+      A getter exposes a copy of state. A setter is not automatic. Only add one if that change is a legal operation.
+    </div>
+
+    <div class="diagram"><pre class="mermaid">
+sequenceDiagram
+  participant Client
+  participant Account as BankAccount
+  Client->>Account: deposit(500)
+  Account->>Account: requirePositive
+  Account->>Account: balance += 500
+  Client->>Account: withdraw(9999)
+  Account-->>Client: IllegalStateException
+    </pre></div>
+    <p class="caption">Illegal operations are rejected; the object stays valid.</p>
+
+    <p><code>IllegalArgumentException</code> = caller passed a bad value. <code>IllegalStateException</code> = the object is valid, but this action is not allowed now (overdraw).</p>
+
+    <h2 id="inherit">3. Inheritance vs composition</h2>
+    <div class="def">
+      <strong>Definition — inheritance (is-a)</strong>
+      <code>Circle extends Shape</code> means a Circle really is a Shape and can sit in a <code>Shape</code> variable. Use only when substitution is honest (Liskov).
+    </div>
+    <div class="def">
+      <strong>Definition — composition (has-a)</strong>
+      The object holds another object and delegates. HashSet has a HashMap. LRU cache has a map and a list. Default to this: less coupling.
+    </div>
+
+    <div class="grid2">
+      <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Shape --> Circle
+  Shape --> Rectangle
+      </pre></div>
+      <div class="diagram"><pre class="mermaid">
+flowchart LR
+  LRU --> HashMap
+  LRU --> LinkedList
+      </pre></div>
+    </div>
+    <p class="caption">Left: inheritance (is-a). Right: composition (has-a).</p>
+
+    <h2 id="abs">4. Abstract class vs interface</h2>
+    <table>
+      <tr><th></th><th>Abstract class</th><th>Interface</th></tr>
+      <tr><td>Keyword</td><td><code>abstract class</code></td><td><code>interface</code></td></tr>
+      <tr><td>State</td><td>Can have fields</td><td>Mostly contract; defaults allowed</td></tr>
+      <tr><td>Inheritance</td><td>Extend <strong>one</strong></td><td>Implement <strong>many</strong></td></tr>
+      <tr><td>Use when</td><td>A family with shared code (<code>Shape</code>)</td><td>A capability (<code>Payable</code>, later <code>Stack&lt;T&gt;</code>)</td></tr>
+    </table>
+    <div class="def">
+      <strong>Overloading vs overriding</strong>
+      Overloading: same name, different parameter lists, compile time. Overriding: same signature in a subclass, runtime (<code>@Override</code>).
+    </div>
+    <p>You cannot <code>new Shape()</code>. You <code>new Circle(2)</code> or <code>new Rectangle(3, 4)</code>.</p>
+
+    <h2 id="poly">5. Polymorphism</h2>
+    <div class="def">
+      <strong>Definition</strong>
+      One compile-time type, many runtime types. <code>Shape s = new Circle(3); s.area();</code> runs <code>Circle.area()</code>. The client depends on the contract, not the concrete class.
+    </div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Client --> StackIface["Stack T"]
+  StackIface --> ArrayStack
+  StackIface --> LinkedStack
+    </pre></div>
+    <p class="caption">Same calls: push and pop. Different internals. That is Phase 1.</p>
+
+    <h2 id="gen">6. Generics</h2>
+    <div class="def">
+      <strong>Definition — type parameter T</strong>
+      A placeholder the caller fills: <code>Box&lt;String&gt;</code> holds String. The compiler checks it so you do not cast and do not get ClassCastException.
+    </div>
+    <div class="def">
+      <strong>Definition — bound</strong>
+      <code>T extends Comparable&lt;T&gt;</code> means T can compare to itself. Trees and heaps need this.
+    </div>
+<pre><code>Box&lt;String&gt; names = new Box&lt;&gt;();
+names.set("Ada");
+String n = names.get();</code></pre>
+
+    <h2 id="eq">7. equals and hashCode</h2>
+    <div class="def">
+      <strong>== vs equals</strong>
+      <code>==</code> on objects is identity (same memory). <code>equals</code> is value, if you define it.
+    </div>
+    <div class="def">
+      <strong>Contract</strong>
+      If <code>a.equals(b)</code> then <code>a.hashCode() == b.hashCode()</code>. Override both. Same fields. <code>equals(null)</code> is false. HashMap in Phase 2 depends on this.
+    </div>
+    <p>Value objects (Point, Invoice) implement both. Identity objects (mutating BankAccount) usually should not — two accounts with the same balance are still different accounts. Java <code>record</code> generates equals/hashCode from components.</p>
+
+    <h2 id="solid">8. SOLID</h2>
+    <table>
+      <tr><th>Letter</th><th>Meaning</th><th>This folder</th></tr>
+      <tr><td>S</td><td>Single responsibility</td><td>BankAccount stores money; it does not print PDFs</td></tr>
+      <tr><td>O</td><td>Open/closed</td><td>Add Triangle by adding a class, not a giant switch</td></tr>
+      <tr><td>L</td><td>Liskov</td><td>Circle is safe anywhere Shape is expected</td></tr>
+      <tr><td>I</td><td>Interface segregation</td><td>Payable is one method</td></tr>
+      <tr><td>D</td><td>Dependency inversion</td><td>Demo sums Payable[], not Invoice[]</td></tr>
+    </table>
+
+    <h2 id="words">9. Java words</h2>
+    <table>
+      <tr><th>Word</th><th>Meaning</th></tr>
+      <tr><td><code>class</code></td><td>Blueprint</td></tr>
+      <tr><td><code>new</code></td><td>Create one object</td></tr>
+      <tr><td><code>private</code> / <code>public</code></td><td>Who may use it</td></tr>
+      <tr><td><code>final</code> class / field</td><td>No subclass / assign once</td></tr>
+      <tr><td><code>static</code></td><td>Belongs to the class (<code>main</code>)</td></tr>
+      <tr><td><code>abstract</code> / <code>interface</code></td><td>Incomplete type / capability</td></tr>
+      <tr><td><code>extends</code> / <code>implements</code></td><td>Is-a / has-capability</td></tr>
+      <tr><td><code>record</code></td><td>Value type; Java writes equals/hashCode</td></tr>
+    </table>
+
+    <h2>How to practice</h2>
+    <ol>
+      <li>Run <code>dsa.foundations.Demo</code>.</li>
+      <li>Recopy BankAccount from memory.</li>
+      <li>Solve Temperature, TotalPay, PointEquals without peeking first.</li>
+    </ol>
+<pre><code>javac -d out src/dsa/foundations/*.java problems/dsa/foundations/problems/*.java
+java -cp out dsa.foundations.Demo</code></pre>
+
+    <footer>
+      Source: <a href="NOTES.md">NOTES.md</a> · Next <a href="../01-linear-structures/NOTES.html">linear structures</a> · <a href="../index.html">All notes</a>
+    </footer>
+  </div>
+</body>
+</html>

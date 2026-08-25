@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Java Fundamentals Demo",
+      "request": "launch",
+      "mainClass": "java.fundamentals.Demo",
+      "projectName": "DSA"
+    },
+    {
+      "type": "java",
+      "name": "OOP Foundations Demo",
+      "request": "launch",
+      "mainClass": "dsa.foundations.Demo",
+      "projectName": "DSA"
+    },
+    {
+      "type": "java",
+      "name": "Linear Structures Demo",
+      "request": "launch",
+      "mainClass": "dsa.linear.Demo",
+      "projectName": "DSA"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
+}

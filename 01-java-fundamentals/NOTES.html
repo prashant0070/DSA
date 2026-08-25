@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java fundamentals</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.md">Full Markdown (best for examples)</a>
+      <a href="STRINGS.html">Strings</a>
+      <a href="COLLECTIONS.html">Collections</a>
+      <a href="INTERVIEW-QA.html">Interview Q&amp;A</a>
+    </nav>
+    <p class="pill">Language</p>
+    <h1>Java fundamentals</h1>
+    <p class="lead">Plain English + runnable examples. The Markdown files have the <strong>full</strong> example set — use this page as a quick visual tour.</p>
+
+    <h2>1. Primitive vs reference</h2>
+    <div class="def"><strong>In simple words</strong> Primitive holds the number. Reference holds an address to an object.</div>
+<pre><code>int a = 10;
+int b = a; b = 99;
+// a is still 10
+
+int[] x = {1, 2, 3};
+int[] y = x; y[0] = 99;
+// x[0] is 99 — same array</code></pre>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Var["int x = 5"] --> StackSlot["stack: 5"]
+  Ref["String s"] --> Heap["heap: Ada"]
+    </pre></div>
+
+    <h2>2. Autoboxing trap</h2>
+<pre><code>Integer a = 100, b = 100;
+System.out.println(a == b);      // often true (cache)
+Integer c = 200, d = 200;
+System.out.println(c == d);      // often false
+System.out.println(c.equals(d)); // true — always use equals</code></pre>
+
+    <h2>3. Arrays</h2>
+<pre><code>int[] a = {3, 1, 4};
+Arrays.sort(a);
+System.out.println(Arrays.toString(a)); // [1, 3, 4]
+
+List&lt;Integer&gt; fixed = Arrays.asList(1, 2, 3);
+// fixed.add(4); // throws — use new ArrayList&lt;&gt;(...) to grow</code></pre>
+
+    <h2>4. Strings (summary)</h2>
+<pre><code>String s = "hi";
+s.toUpperCase();
+System.out.println(s);          // hi — immutable
+s = s.toUpperCase();            // HI
+
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i &lt; 5; i++) sb.append(i);
+System.out.println(sb);         // 01234</code></pre>
+    <p>Full walkthrough with pool, methods, anagrams: <a href="STRINGS.html">STRINGS.html</a> · <a href="STRINGS.md">STRINGS.md</a></p>
+
+    <h2>5. Collections (summary)</h2>
+<pre><code>List&lt;String&gt; names = new ArrayList&lt;&gt;();
+names.add("Ada");
+System.out.println(names.get(0)); // Ada
+
+Map&lt;String, Integer&gt; freq = new HashMap&lt;&gt;();
+freq.merge("to", 1, Integer::sum);
+freq.merge("to", 1, Integer::sum);
+System.out.println(freq.get("to")); // 2
+
+Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;();
+stack.push(1); stack.push(2);
+System.out.println(stack.pop()); // 2</code></pre>
+    <p>Full walkthrough: <a href="COLLECTIONS.html">COLLECTIONS.html</a> · <a href="COLLECTIONS.md">COLLECTIONS.md</a></p>
+
+    <h2>6. Exceptions</h2>
+<pre><code>try {
+  int age = Integer.parseInt("abc");
+} catch (NumberFormatException e) {
+  System.out.println("not a number");
+} finally {
+  System.out.println("always runs");
+}</code></pre>
+
+    <h2>7. Streams</h2>
+<pre><code>List&lt;Integer&gt; out = List.of(1,2,3,4,5,6).stream()
+  .filter(n -&gt; n % 2 == 0)
+  .map(n -&gt; n * 10)
+  .toList();
+// [20, 40, 60]</code></pre>
+
+    <h2>Study path</h2>
+    <ol>
+      <li>Read <a href="NOTES.md">NOTES.md</a> and type each example</li>
+      <li><a href="STRINGS.md">STRINGS.md</a> then <a href="COLLECTIONS.md">COLLECTIONS.md</a></li>
+      <li><a href="INTERVIEW-QA.md">INTERVIEW-QA.md</a> aloud</li>
+      <li>Run <code>Demo.java</code></li>
+    </ol>
+
+<pre><code>cd 01-java-fundamentals
+javac -d out src/java/fundamentals/*.java
+java -cp out java.fundamentals.Demo</code></pre>
+
+    <footer><a href="STRINGS.html">Strings</a> · <a href="COLLECTIONS.html">Collections</a> · <a href="INTERVIEW-QA.html">Q&amp;A</a></footer>
+  </div>
+</body>
+</html>

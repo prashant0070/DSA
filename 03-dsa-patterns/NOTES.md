@@ -1,5 +1,7 @@
 # DSA patterns — full notes
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Before:** [02-complexity](../02-complexity/NOTES.md) — analyze every pattern’s time/space  
 **Practice:** [easy](../practice/easy/README.md) then [medium](../practice/medium/README.md)
 

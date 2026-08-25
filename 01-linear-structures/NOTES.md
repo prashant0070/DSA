@@ -1,5 +1,7 @@
 # Phase 1 — Linear structures
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Prev:** [00-oop-foundations](../00-oop-foundations/NOTES.md)  
 **Next:** Phase 2 — hashing (after you finish the problems here)
 

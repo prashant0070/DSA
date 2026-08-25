@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System design practice</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="PRACTICE.md">Markdown</a>
+      <a href="NOTES.html">HLD</a>
+      <a href="AUTOMATION-DESIGN.html">Automation</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">Practice</p>
+    <h1>Design prompts + rubric</h1>
+    <p class="lead">45-minute timer. Score yourself /10. Target ≥ 7. Speak out loud.</p>
+
+    <h2>Rubric</h2>
+    <table>
+      <tr><th>Area</th><th>Points</th></tr>
+      <tr><td>Requirements / NFRs</td><td>0–2</td></tr>
+      <tr><td>Estimates</td><td>0–2</td></tr>
+      <tr><td>Diagram</td><td>0–2</td></tr>
+      <tr><td>Depth on hot path</td><td>0–2</td></tr>
+      <tr><td>Failures / trade-offs</td><td>0–2</td></tr>
+    </table>
+
+    <h2>A — Classic HLD</h2>
+    <ul>
+      <li>URL shortener</li>
+      <li>Rate limiter</li>
+      <li>Pastebin / file share</li>
+      <li>Notification system</li>
+      <li>News feed</li>
+      <li>Chat</li>
+      <li>Ride matching</li>
+      <li>Video streaming</li>
+    </ul>
+
+    <h2>B — Classic LLD</h2>
+    <ul>
+      <li>LRU cache</li>
+      <li>Parking lot</li>
+      <li>Elevator</li>
+      <li>Chess / snakes</li>
+      <li>Bookstore inventory</li>
+      <li>Splitwise-lite</li>
+      <li>Pub-sub in-process</li>
+    </ul>
+
+    <h2>C — Automation HLD (do these)</h2>
+    <div class="card"><h3>C1 Distributed UI runner</h3><p>10k tests / 30 min — concurrency math, queue, isolation, artifacts.</p></div>
+    <div class="card"><h3>C2 Device farm</h3><p>Locks, health, signing, cloud vs lab.</p></div>
+    <div class="card"><h3>C3 Flake analytics</h3><p>Events, scores, quarantine.</p></div>
+    <div class="card"><h3>C4 CI orchestrator</h3><p>DAG, smoke vs full, secrets.</p></div>
+    <div class="card"><h3>C5 AI test-gen platform</h3><p>Sandbox, eval, cost, review.</p></div>
+
+    <h2>D — Automation LLD</h2>
+    <p>Driver factory, retry policy, artifact uploader, result aggregator, session pool, page components.</p>
+
+    <h2>Weekly plan</h2>
+    <p>Week 1: A1 A2 B1 B2 · Week 3: <strong>C1 C2 D1 D2</strong> · Week 5: C5 + mixed Lead round.</p>
+    <footer>Details in <a href="PRACTICE.md">PRACTICE.md</a></footer>
+  </div>
+</body>
+</html>

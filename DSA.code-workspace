@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "name": "DSA",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.project.outputPath": "bin",
+    "java.import.maven.enabled": false,
+    "java.import.gradle.enabled": false,
+    "[java]": {
+      "editor.defaultFormatter": "redhat.java",
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true,
+      "editor.formatOnSave": true
+    }
+  },
+  "extensions": {
+    "recommendations": ["vscjava.vscode-java-pack"],
+    "unwantedRecommendations": ["oracle.oracle-java"]
+  }
+}

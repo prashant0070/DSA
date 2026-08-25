@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Framework architecture</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Technical Q&amp;A</a>
+      <a href="BEHAVIORAL-QA.md">Behavioral</a>
+    </nav>
+    <p class="pill">Senior SDET</p>
+    <h1>Automation framework architecture</h1>
+    <p class="lead">One mental model for Selenium, Playwright, Appium, Rest Assured, and Locust. Design, defend, and scale a test system.</p>
+
+    <h2>Reference layers</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  CI["CI shards workers artifacts"] --> Tests
+  Tests --> Flows["Business flows"]
+  Flows --> Pages["Pages / API clients / Locust"]
+  Pages --> Driver["Driver factory Strategy Decorator"]
+  Driver --> Cross["Config logging reporting data secrets"]
+    </pre></div>
+    <p class="caption">Interview sentence: separate what you test, how flows are expressed, where locators/API live, and how you run.</p>
+
+    <h2>Layer rules</h2>
+    <table>
+      <tr><th>Layer</th><th>Owns</th><th>Must not own</th></tr>
+      <tr><td>Test</td><td>Arrange act assert tags</td><td>Locators, sleeps, raw HTTP</td></tr>
+      <tr><td>Flow</td><td>Multi-step journeys</td><td>Browser APIs in every test</td></tr>
+      <tr><td>Page / API</td><td>Locators, waits, clients</td><td>Business asserts (keep light)</td></tr>
+      <tr><td>Driver</td><td>Create/quit, capabilities</td><td>Assertions</td></tr>
+    </table>
+    <p>Golden: one context/driver per test, no sleep, stable locators, independent data, artifacts on fail, env from outside, flake is a bug.</p>
+
+    <h2>Playwright vs Selenium (isolation)</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Browser --> Ctx1["Context test A"]
+  Browser --> Ctx2["Context test B"]
+  Ctx1 --> PageA
+  Ctx2 --> PageB
+    </pre></div>
+    <p>Playwright: Browser → Context (isolated cookies) → Page → Locator with auto-wait. Selenium: one WebDriver per test thread; never a static singleton.</p>
+
+    <h2>Appium / API / load</h2>
+    <p>Appium: client → server → UiAutomator2/XCUITest → device. Screen objects like POM. One session per device.</p>
+    <p>Rest Assured: domain clients + POJOs + env spec. Chain create → extract id → update.</p>
+    <p>Locust: share API clients; gate p95; investigate p99 spikes with deploy, errors, DB, cache, downstream.</p>
+
+    <h2>CI</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  PR["PR smoke 15m"] --> Merge
+  Night["Nightly sharded"] --> Full
+  Rel["Release"] --> P0["smoke + perf gate"]
+    </pre></div>
+    <footer>Full notes <a href="NOTES.md">NOTES.md</a> · <a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

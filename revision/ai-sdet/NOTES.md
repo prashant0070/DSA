@@ -1,5 +1,7 @@
 # AI / GenAI testing for SDET
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Deep Q&A:** [INTERVIEW-QA.md](INTERVIEW-QA.md)  
 **Your differentiator:** tie answers to your AI automation tool project.
 

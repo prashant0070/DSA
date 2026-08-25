@@ -1,5 +1,7 @@
 # Docker, Kubernetes & AWS — SDET interview notes
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Deep Q&A:** [INTERVIEW-QA.md](INTERVIEW-QA.md)
 
 ---

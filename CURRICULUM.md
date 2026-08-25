@@ -14,19 +14,24 @@
 | 0 | [00-oop-foundations/](00-oop-foundations/) | Learn + code | NOTES + src + problems |
 | 0b | [00-oop-foundations/ADVANCED.md](00-oop-foundations/ADVANCED.md) | Learn | Advanced OOP + tricky topics |
 | 0c | [00-oop-foundations/INTERVIEW-QA.md](00-oop-foundations/INTERVIEW-QA.md) | Revise | OOP interview Q&A |
-| 1 | [01-java-fundamentals/](01-java-fundamentals/) | Learn + code | Syntax, collections, streams, exceptions |
+| 1 | [01-java-fundamentals/](01-java-fundamentals/) | Learn + Q&A | [NOTES](01-java-fundamentals/NOTES.md) · [STRINGS](01-java-fundamentals/STRINGS.md) · [COLLECTIONS](01-java-fundamentals/COLLECTIONS.md) · [INTERVIEW-QA](01-java-fundamentals/INTERVIEW-QA.md) |
 | 2 | [02-complexity/](02-complexity/) | Learn | Big-O, time/space, how to calculate |
 | 3 | [03-dsa-patterns/](03-dsa-patterns/) | Learn | Pattern recognition + templates |
 | 4 | [practice/easy/](practice/easy/) | **You code** | 75 easy stubs |
-| 5 | [practice/medium/](practice/medium/) | **You code** | Medium stubs (interview core) |
+| 5 | [practice/medium/](practice/medium/) | **You code** | 25 medium stubs |
+| 5b | [practice/advanced/](practice/advanced/) | **You code** | 20 Amazon/Apple SDET III stubs |
+| 5c | [practice/CODING-INTERVIEW-QA.md](practice/CODING-INTERVIEW-QA.md) | Revise | FAANG coding Q&A + pattern map |
+| 5d | [AMAZON-APPLE-SDET3-CHECKLIST.md](AMAZON-APPLE-SDET3-CHECKLIST.md) | Plan | 12-week gap-closure plan |
 | 6 | Phases `01`–`10` linear structures → LLD | Learn + build | Unlocked after Stage 3 |
 | 7 | [revision/design-patterns/](revision/design-patterns/) | Revise | GoF + POM + demos |
 | 8 | [revision/framework-design/](revision/framework-design/) | Revise | FW architecture + behavioral |
+| 8b | [revision/behavioral/](revision/behavioral/) | Revise | STAR guide, Leadership, Company LPs, Gaps |
 | 9 | [revision/automation/](revision/automation/) | Revise | Per-tool deep dives |
 | 10 | [revision/api-http/](revision/api-http/) | Revise | HTTP, REST, auth |
 | 11 | [revision/sql/](revision/sql/) | Revise | SQL + DB internals |
 | 12 | [revision/docker-k8s-aws/](revision/docker-k8s-aws/) | Revise | Platform at interview depth |
 | 13 | [revision/ai-sdet/](revision/ai-sdet/) | Revise | RAG, agents, LLM eval, your AI tool |
+| 14 | [revision/system-design/](revision/system-design/) | Revise + practice | HLD, LLD, automation platforms (FAANG format) |
 
 ---
 

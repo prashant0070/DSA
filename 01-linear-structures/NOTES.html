@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phase 1 — Linear structures</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="../00-oop-foundations/NOTES.html">Prev: OOP</a>
+      <a href="../02-complexity/NOTES.html">Complexity</a>
+    </nav>
+    <p class="pill">Phase 1</p>
+    <h1>Linear structures as objects</h1>
+    <p class="lead">Build arrays, lists, stacks, and queues as real Java classes. Client code depends on an interface so you can swap the implementation.</p>
+
+    <h2>Three questions for every structure</h2>
+    <ol>
+      <li><strong>What is the object?</strong> fields and invariants</li>
+      <li><strong>What is the contract?</strong> <code>Stack&lt;T&gt;</code>, <code>Queue&lt;T&gt;</code></li>
+      <li><strong>What can swap?</strong> <code>ArrayStack</code> vs <code>LinkedStack</code></li>
+    </ol>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Client --> StackI["Stack T"]
+  StackI --> ArrayStack
+  StackI --> LinkedStack
+    </pre></div>
+    <p class="caption">Polymorphism: same push/pop, different internals.</p>
+
+    <h2>Dynamic array</h2>
+    <div class="def"><strong>Definition</strong> Contiguous slots. Logical size vs capacity. When full, allocate 2× and copy. Add at end is amortized O(1) because expensive resizes are rare.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  S0["size 3 capacity 4"] --> S1["add 4th: still O1"]
+  S1 --> S2["add 5th: copy to capacity 8"]
+    </pre></div>
+    <p class="caption">This is how ArrayList works.</p>
+    <table>
+      <tr><th>Op</th><th>Time</th></tr>
+      <tr><td>get / set i</td><td>O(1)</td></tr>
+      <tr><td>add at end</td><td>O(1) amortized</td></tr>
+      <tr><td>insert front</td><td>O(n) shift</td></tr>
+    </table>
+
+    <h2>Singly linked list</h2>
+    <div class="def"><strong>Definition</strong> Nodes with value + next. Head is the first node or null. Private inner class Node hides the wiring. addFirst / removeFirst are O(1). Index get is O(n).</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  H["head"] --> N1["1"]
+  N1 --> N2["2"]
+  N2 --> N3["3"]
+  N3 --> Null["null"]
+    </pre></div>
+    <p class="caption">Reverse: prev, curr, next — flip arrows in place.</p>
+
+    <h2>Stack — LIFO</h2>
+    <div class="def"><strong>Definition</strong> Last in, first out. Interface: push, pop, peek, isEmpty, size. ArrayStack uses the end of a dynamic array. LinkedStack pushes at the head.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Top["top: C"] --> B["B"]
+  B --> A["A bottom"]
+    </pre></div>
+    <p>Use: parentheses, undo, DFS, monotonic stack. Use <code>dsa.linear.Stack</code>, not <code>java.util.Stack</code>, in this phase.</p>
+
+    <h2>Queue — FIFO</h2>
+    <div class="def"><strong>Definition</strong> First in, first out. offer at back, poll from front. Circular array: head and tail wrap with modulo so poll does not shift the whole array.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Head["head"] --> A["A"]
+  A --> B["B"]
+  B --> Tail["tail C"]
+    </pre></div>
+    <p>Use: BFS, scheduling. LinkedQueue keeps head and tail pointers.</p>
+
+    <h2>Complexity snapshot</h2>
+    <table>
+      <tr><th>Structure</th><th>Index</th><th>Insert end</th><th>Insert front</th></tr>
+      <tr><td>Dynamic array</td><td>O(1)</td><td>O(1)*</td><td>O(n)</td></tr>
+      <tr><td>Linked list</td><td>O(n)</td><td>O(n)</td><td>O(1)</td></tr>
+      <tr><td>Stack / queue</td><td>—</td><td>O(1) push/offer</td><td>O(1) pop/poll at the right end</td></tr>
+    </table>
+
+    <h2>Problems you implement</h2>
+    <ul>
+      <li>ValidParenthesesWithStack</li>
+      <li>reverseInPlace on SinglyLinkedList</li>
+      <li>QueueWithTwoStacks</li>
+    </ul>
+<pre><code>javac -d out src/dsa/linear/*.java problems/dsa/linear/problems/*.java
+java -cp out dsa.linear.Demo</code></pre>
+    <footer>Source <a href="NOTES.md">NOTES.md</a> · <a href="../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

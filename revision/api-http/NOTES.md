@@ -1,5 +1,7 @@
 # HTTP & REST — revision notes
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Deep Q&A:** [INTERVIEW-QA.md](INTERVIEW-QA.md)  
 **Framework context:** [framework-design](../framework-design/NOTES.md) §6
 

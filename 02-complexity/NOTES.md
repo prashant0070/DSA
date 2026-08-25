@@ -1,5 +1,7 @@
 # Big-O and complexity — full notes
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Before:** [01-java-fundamentals](../01-java-fundamentals/NOTES.md) basics  
 **Next:** [03-dsa-patterns](../03-dsa-patterns/NOTES.md) — which pattern fits which problem  
 **Practice:** After reading, analyze every solution you write in `practice/easy/` and `practice/medium/`.

@@ -1,5 +1,7 @@
 # Design patterns — notes (beginner → interview)
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Use with:** [INTERVIEW-QA.md](INTERVIEW-QA.md) for deep questions.  
 **Code:** small Java examples in `src/revision/patterns/` — read, then explain aloud.
 

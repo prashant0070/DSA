@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java fundamentals — Interview Q&amp;A</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.html">Fundamentals hub</a>
+      <a href="INTERVIEW-QA.md">Markdown</a>
+      <a href="STRINGS.html">Strings</a>
+      <a href="COLLECTIONS.html">Collections</a>
+      <a href="../00-oop-foundations/INTERVIEW-QA.md">OOP Q&amp;A</a>
+    </nav>
+    <p class="pill">Interview</p>
+    <h1>Java fundamentals — Q&amp;A</h1>
+    <p class="lead">Answer aloud, then check. Full answers live in <a href="INTERVIEW-QA.md">INTERVIEW-QA.md</a> (this page is the quick drill sheet).</p>
+
+    <h2>A. Strings</h2>
+    <div class="def"><strong>A1</strong> Why immutable? → security, thread-safety, pool, hash cache, Map keys.</div>
+    <div class="def"><strong>A2</strong> String vs Builder vs Buffer → immutable / mutable unsync / mutable sync.</div>
+    <div class="def"><strong>A3</strong> <code>==</code> vs <code>equals</code> → identity vs content; never <code>==</code> for text.</div>
+    <div class="def"><strong>A4</strong> Pool / intern → shared literals; <code>intern()</code> canonicalizes.</div>
+    <div class="def"><strong>A5</strong> <code>+=</code> in loop → O(n²); use StringBuilder.</div>
+    <div class="def"><strong>A6</strong> substring modern Java → copies (7u6+).</div>
+    <div class="def"><strong>A7</strong> Anagram → freq array O(n) or sort.</div>
+    <div class="def"><strong>A8</strong> trim vs strip → ASCII-ish vs Unicode whitespace.</div>
+
+    <h2>B–C. Arrays &amp; lists</h2>
+    <div class="def"><strong>B2</strong> <code>Arrays.asList</code> fixed size — no add.</div>
+    <div class="def"><strong>C1</strong> ArrayList vs LinkedList → prefer ArrayList; index O(1).</div>
+    <div class="def"><strong>C2</strong> ArrayList growth → ~1.5×, amortized O(1) append.</div>
+    <div class="def"><strong>C3</strong> Stack/queue → ArrayDeque (not legacy Stack).</div>
+    <div class="def"><strong>C4</strong> PriorityQueue → heap; iteration not sorted.</div>
+
+    <h2>D. HashMap (high frequency)</h2>
+    <div class="def"><strong>D1</strong> hash → bucket → list/tree; equals resolves collisions.</div>
+    <div class="def"><strong>D2</strong> Load factor default 0.75.</div>
+    <div class="def"><strong>D3</strong> equals + hashCode together for keys.</div>
+    <div class="def"><strong>D4</strong> HashMap allows one null key; ConcurrentHashMap allows none.</div>
+    <div class="def"><strong>D5</strong> HashMap not thread-safe.</div>
+    <div class="def"><strong>D7</strong> LinkedHashMap → order / LRU via removeEldestEntry.</div>
+    <div class="def"><strong>D10</strong> Fail-fast → CME on structural change during iteration.</div>
+
+    <h2>E–J. Quick hits</h2>
+    <div class="def"><strong>E</strong> Comparable = natural; Comparator = external.</div>
+    <div class="def"><strong>F</strong> Erasure; PECS (producer extends, consumer super).</div>
+    <div class="def"><strong>H</strong> Integer cache −128..127; unbox null → NPE.</div>
+    <div class="def"><strong>J</strong> No static WebDriver in parallel tests.</div>
+
+    <h2>K. Scenario picks</h2>
+    <table>
+      <tr><th>Scenario</th><th>Pick</th></tr>
+      <tr><td>Word frequency</td><td>HashMap</td></tr>
+      <tr><td>Unique IDs</td><td>HashSet</td></tr>
+      <tr><td>LRU</td><td>LinkedHashMap access-order</td></tr>
+      <tr><td>Top K</td><td>PriorityQueue</td></tr>
+      <tr><td>BFS / retries</td><td>ArrayDeque</td></tr>
+      <tr><td>Parallel merge</td><td>ConcurrentHashMap</td></tr>
+      <tr><td>Huge string build</td><td>StringBuilder</td></tr>
+    </table>
+
+    <h2>L. Rapid-fire</h2>
+    <p>Default List → ArrayList · Map → HashMap · Stack → ArrayDeque · Concurrent map → ConcurrentHashMap · Sorted map → TreeMap · Ordered map → LinkedHashMap · <code>List.of</code> mutable? No.</p>
+
+    <footer>Full answers: <a href="INTERVIEW-QA.md">INTERVIEW-QA.md</a> · OOP: <a href="../00-oop-foundations/INTERVIEW-QA.md">OOP Q&amp;A</a></footer>
+  </div>
+</body>
+</html>

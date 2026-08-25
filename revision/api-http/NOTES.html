@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTP and REST</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">API</p>
+    <h1>HTTP and REST</h1>
+    <p class="lead">Methods, status codes, and auth — what SDET interviews actually quiz.</p>
+
+    <h2>Request cycle</h2>
+    <div class="diagram"><pre class="mermaid">
+sequenceDiagram
+  participant Test
+  participant API
+  participant DB
+  Test->>API: POST /users JSON
+  API->>DB: insert
+  API-->>Test: 201 + id
+    </pre></div>
+
+    <h2>Methods</h2>
+    <table>
+      <tr><th>Method</th><th>Idempotent</th><th>Typical</th></tr>
+      <tr><td>GET</td><td>Yes</td><td>Read</td></tr>
+      <tr><td>POST</td><td>No</td><td>Create / action</td></tr>
+      <tr><td>PUT</td><td>Yes</td><td>Replace whole resource</td></tr>
+      <tr><td>PATCH</td><td>Depends</td><td>Partial update</td></tr>
+      <tr><td>DELETE</td><td>Yes</td><td>Remove</td></tr>
+    </table>
+    <div class="def"><strong>PUT vs PATCH</strong> PUT replaces the document. PATCH updates fields. PATCH is not always idempotent (increment a counter).</div>
+
+    <h2>Status codes</h2>
+    <table>
+      <tr><th>Code</th><th>Meaning</th></tr>
+      <tr><td>200 / 201 / 204</td><td>OK / created / no content</td></tr>
+      <tr><td>400 / 422</td><td>Malformed vs semantic validation</td></tr>
+      <tr><td>401 / 403</td><td>Not authenticated vs authenticated but forbidden</td></tr>
+      <tr><td>404 / 409 / 429</td><td>Missing / conflict / rate limit</td></tr>
+      <tr><td>500 / 502 / 503 / 504</td><td>Bug / bad gateway / unavailable / timeout</td></tr>
+    </table>
+
+    <h2>Testing layers</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Contract --> Integration
+  Integration --> E2E["E2E UI"]
+    </pre></div>
+    <p>Contract (schema/Pact) is fast. Integration hits real service + DB. UI is the expensive top of the pyramid.</p>
+    <footer><a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

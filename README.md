@@ -3,10 +3,15 @@
 A practice curriculum: OOP and DSA **by building structures as classes**, plus **SDET revision** (framework architecture, tools, behavioral).
 
 **Language:** Java 17+  
+**Browser notes:** [index.html](index.html) — every `NOTES.md` has a matching `NOTES.html` with diagrams (open locally).  
 **Master map:** [CURRICULUM.md](CURRICULUM.md) — all tracks and status  
 **Current phase:** `01-linear-structures` — **[START.md](START.md)** for today's steps  
 **Easy problems:** [practice/easy/](practice/easy/README.md) — 75 stubs **you implement**  
 **Medium problems:** [practice/medium/](practice/medium/README.md) — 25 interview-core stubs **you implement**  
+**Advanced problems:** [practice/advanced/](practice/advanced/README.md) — 20 SDET III / Amazon-level stubs  
+**Coding Q&A (FAANG):** [practice/CODING-INTERVIEW-QA.md](practice/CODING-INTERVIEW-QA.md)  
+**Full coding question list:** [practice/CODING-QUESTIONS-INDEX.md](practice/CODING-QUESTIONS-INDEX.md) — every stub as an actual interview question  
+**Amazon / Apple SDET III plan:** [AMAZON-APPLE-SDET3-CHECKLIST.md](AMAZON-APPLE-SDET3-CHECKLIST.md)  
 **SDET revision:** [revision/](revision/README.md) — patterns, framework, tools, SQL, platform, AI
 
 ## How to use this repo
@@ -91,13 +96,15 @@ Prefer **your** types over the JDK collections while you are learning that struc
 
 | Track | Folder | Status |
 | --- | --- | --- |
+| System design HLD/LLD/Automation | [revision/system-design/](revision/system-design/) | Done + HTML |
 | Design patterns | [revision/design-patterns/](revision/design-patterns/) | Done |
 | Framework architecture | [revision/framework-design/](revision/framework-design/) | Done |
 | Automation tools | [revision/automation/](revision/automation/) | Done (5 tools) |
 | HTTP / REST | [revision/api-http/](revision/api-http/) | Done |
 | SQL | [revision/sql/](revision/sql/) | Done |
 | Docker / K8s / AWS | [revision/docker-k8s-aws/](revision/docker-k8s-aws/) | Done |
-| AI / GenAI SDET | [revision/ai-sdet/](revision/ai-sdet/) | Done |
+| AI / GenAI SDET | [revision/ai-sdet/](revision/ai-sdet/) — expanded [INTERVIEW-QA](revision/ai-sdet/INTERVIEW-QA.md) | Done |
+| Behavioral & leadership | [revision/behavioral/](revision/behavioral/) | STAR · Leadership · Company · Gaps |
 
 ## Learning modules (coding + theory)
 
@@ -105,10 +112,13 @@ Prefer **your** types over the JDK collections while you are learning that struc
 | --- | --- | --- |
 | OOP foundations | [00-oop-foundations/](00-oop-foundations/) | Done |
 | OOP advanced + Q&A | [ADVANCED.md](00-oop-foundations/ADVANCED.md) | Done |
-| Java fundamentals | [01-java-fundamentals/](01-java-fundamentals/) | Done |
+| Java fundamentals | [01-java-fundamentals/](01-java-fundamentals/) — [STRINGS](01-java-fundamentals/STRINGS.md) · [COLLECTIONS](01-java-fundamentals/COLLECTIONS.md) · [INTERVIEW-QA](01-java-fundamentals/INTERVIEW-QA.md) | Done (deep) |
 | Big-O / complexity | [02-complexity/](02-complexity/) | Done |
 | DSA patterns | [03-dsa-patterns/](03-dsa-patterns/) | Done |
 | Medium DSA practice | [practice/medium/](practice/medium/) | 25 stubs |
+| Advanced DSA (SDET III) | [practice/advanced/](practice/advanced/) | 20 stubs |
+| FAANG coding Q&A | [practice/CODING-INTERVIEW-QA.md](practice/CODING-INTERVIEW-QA.md) | Done |
+| Amazon/Apple SDET III plan | [AMAZON-APPLE-SDET3-CHECKLIST.md](AMAZON-APPLE-SDET3-CHECKLIST.md) | Done |
 | Phases 01–10 (build HashMap, Stack, …) | [01-linear-structures/](01-linear-structures/) active · 02–10 coming | Build your own structures |
 
 Full index: [revision/README.md](revision/README.md) · [CURRICULUM.md](CURRICULUM.md)

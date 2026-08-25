@@ -1,5 +1,7 @@
 # Automation framework architecture — notes
 
+**Browser version (diagrams + definitions):** [NOTES.html](NOTES.html)
+
 **Audience:** SDET → Senior SDET → Lead SDET at product companies (Amazon, Google, Microsoft, Meta, Flipkart, Uber, etc.)  
 **Use with:** [INTERVIEW-QA.md](INTERVIEW-QA.md) (technical whiteboard) + [BEHAVIORAL-QA.md](BEHAVIORAL-QA.md) (STAR / leadership)
 

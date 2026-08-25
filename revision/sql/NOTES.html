@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SQL</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">Data</p>
+    <h1>SQL and database internals</h1>
+
+    <h2>JOINs</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  U[users] --> Inner["INNER matching only"]
+  U --> Left["LEFT all users + orders or NULL"]
+    </pre></div>
+    <p>Users with no orders: <code>LEFT JOIN ... WHERE orders.id IS NULL</code>.</p>
+    <div class="def"><strong>WHERE vs HAVING</strong> WHERE filters rows before grouping. HAVING filters groups after GROUP BY.</div>
+
+    <h2>Indexes</h2>
+    <div class="def"><strong>B-tree index</strong> Speeds equality and range. Composite indexes follow leftmost prefix. Function on a column can disable the index. EXPLAIN to see a full scan.</div>
+
+    <h2>ACID and isolation</h2>
+    <table>
+      <tr><th></th><th></th></tr>
+      <tr><td>Atomicity</td><td>All or nothing</td></tr>
+      <tr><td>Consistency</td><td>Valid state</td></tr>
+      <tr><td>Isolation</td><td>Concurrent transactions</td></tr>
+      <tr><td>Durability</td><td>Committed data survives crash</td></tr>
+    </table>
+    <p>Phenomena: dirty read, non-repeatable read, phantom. Isolation: READ UNCOMMITTED → SERIALIZABLE.</p>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  T1[Tx A lock row 1] --> Wait
+  T2[Tx B lock row 2] --> Wait
+  Wait --> Deadlock["deadlock if A wants 2 and B wants 1"]
+    </pre></div>
+
+    <h2>Window functions</h2>
+    <p><code>ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at DESC)</code> — latest payment per user, ranking, LAG/LEAD.</p>
+    <p>SDET: after API create, SELECT by id; cleanup in teardown; never prod PII.</p>
+    <footer><a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

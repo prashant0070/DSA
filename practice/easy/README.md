@@ -23,6 +23,8 @@ Every **easy interview pattern** below has at least one problem. Work in order i
 
 **Still medium/hard (not in this folder):** variable sliding window, 3Sum / rain water, backtracking (subsets, N-queens), graph islands / topo sort / Dijkstra, tree LCA on a binary tree (not BST), heap “top K frequent”, merge intervals, Implement Trie, Union-Find provinces, coin-change DP, LRU cache.
 
+**Next tracks:** [medium](../medium/README.md) · [advanced](../advanced/README.md) · [CODING-INTERVIEW-QA](../CODING-INTERVIEW-QA.md) · **[Full question list](../CODING-QUESTIONS-INDEX.md)** (every problem as an actual interview question)
+
 ## Suggested order
 
 | # | Class | Topic | Logic it covers |

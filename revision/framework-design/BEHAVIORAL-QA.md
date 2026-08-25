@@ -1,5 +1,7 @@
 # Framework & quality — behavioral interview Q&A
 
+**Also see (expanded):** [behavioral/ STAR guide + Leadership + Company LPs](../behavioral/README.md) · [AI automation Q&A](../ai-sdet/INTERVIEW-QA.md)
+
 **Format:** STAR — **S**ituation, **T**ask, **A**ction, **R**esult (quantify when possible).  
 **Target:** SDET, Senior SDET, Lead SDET at product companies (Amazon, Google, Microsoft, Flipkart, Uber, etc.).
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI / GenAI SDET</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">Differentiator</p>
+    <h1>AI / GenAI testing</h1>
+    <p class="lead">RAG, agents, evaluation. Tie answers to your AI automation tool.</p>
+
+    <h2>Terms</h2>
+    <div class="def"><strong>Token</strong> Subword unit; context window is the max tokens in/out.</div>
+    <div class="def"><strong>Embedding</strong> Vector for meaning. Nearby vectors ≈ similar text.</div>
+    <div class="def"><strong>Hallucination</strong> Fluent but ungrounded answer.</div>
+    <div class="def"><strong>Temperature</strong> 0 ≈ more deterministic — use for eval.</div>
+
+    <h2>RAG</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  Docs --> Chunk
+  Chunk --> Embed
+  Embed --> VDB["Vector DB"]
+  Query --> EmbedQ["embed query"]
+  EmbedQ --> VDB
+  VDB --> Prompt
+  Prompt --> LLM
+  LLM --> Answer
+    </pre></div>
+    <p>Test retrieval (right chunks), faithfulness to context, citations, injection, latency, cost.</p>
+
+    <h2>Agents</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Goal --> Plan
+  Plan --> Tool["tool call"]
+  Tool --> Observe
+  Observe --> Plan
+    </pre></div>
+    <p>Failures: wrong tool, infinite loop, unauthorized action, stale context. Tests: mock tools, max steps, permissions.</p>
+
+    <h2>Eval</h2>
+    <p>Golden Q&amp;A, LLM-as-judge (bias — pair with humans), structured exact match, prompt/model regression gates, token budget alerts.</p>
+    <p>Your tool: unit-test parsers, golden codegen files, generated tests must compile, human review, no hardcoded prod URLs.</p>
+    <footer><a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

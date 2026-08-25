@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docker Kubernetes AWS</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="INTERVIEW-QA.md">Q&amp;A</a>
+    </nav>
+    <p class="pill">Platform</p>
+    <h1>Docker, Kubernetes, AWS</h1>
+    <p class="lead">Interview-level platform for Senior SDET — not cluster admin.</p>
+
+    <h2>Docker</h2>
+    <div class="def"><strong>Image</strong> Immutable layers. <strong>Container</strong> running instance. <strong>Dockerfile</strong> build recipe. <strong>Volume</strong> persistent files. <strong>Compose</strong> multi-container local stack.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  DF[Dockerfile] --> Image
+  Image --> C1[container tests]
+  Image --> C2[container browser]
+    </pre></div>
+    <p>SDET: Playwright/Selenium images, mount reports, pass GRID_URL.</p>
+
+    <h2>Kubernetes (concepts)</h2>
+    <table>
+      <tr><th>Object</th><th>Role</th></tr>
+      <tr><td>Pod</td><td>Smallest unit, shared network</td></tr>
+      <tr><td>Deployment</td><td>Replicas, rolling update</td></tr>
+      <tr><td>Job</td><td>Run to completion — test batches</td></tr>
+      <tr><td>Service</td><td>Stable DNS to pods</td></tr>
+      <tr><td>ConfigMap / Secret</td><td>Config vs credentials</td></tr>
+    </table>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Dep[Deployment] --> Pod1
+  Dep --> Pod2
+  Svc[Service] --> Pod1
+  Svc --> Pod2
+    </pre></div>
+
+    <h2>AWS for SDET</h2>
+    <p>S3 artifacts/traces, ECS/EKS workers, Secrets Manager, CloudWatch logs, Device Farm, CodeBuild. Pattern: push → build image → run tests → upload Allure to S3 → notify.</p>
+    <footer><a href="../../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>

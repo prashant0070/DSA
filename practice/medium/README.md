@@ -40,4 +40,4 @@ java -cp out dsa.practice.medium.MaximumSubarray
 
 Helpers: `Checks.java`, `TreeNode.java`, `Node.java` — not problems.
 
-Advanced track (later): `practice/advanced/`
+Advanced track: [practice/advanced/](../advanced/)

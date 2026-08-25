@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System design — HLD</title>
+  <link rel="stylesheet" href="../../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="LLD.html">LLD</a>
+      <a href="AUTOMATION-DESIGN.html">Automation design</a>
+      <a href="PRACTICE.html">Practice</a>
+    </nav>
+    <p class="pill">FAANG HLD</p>
+    <h1>High-level system design</h1>
+    <p class="lead">45–55 minute format: clarify → estimate → APIs → boxes → deep dive → failures. Same clock for URL shortener and for a test platform.</p>
+
+    <h2>LLD vs HLD</h2>
+    <table>
+      <tr><th></th><th>LLD</th><th>HLD</th></tr>
+      <tr><td>Scope</td><td>One feature / service</td><td>Whole product</td></tr>
+      <tr><td>Output</td><td>Classes, sequences</td><td>Services, DB, cache, queue</td></tr>
+      <tr><td>SDET</td><td>Driver factory</td><td>10k parallel test runner</td></tr>
+    </table>
+
+    <h2>FAANG clock</h2>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  C["0-8 clarify NFR"] --> E["8-12 estimate"]
+  E --> A["12-18 API + boxes"]
+  A --> D["18-35 deep dive"]
+  D --> F["35-45 failures"]
+    </pre></div>
+    <p class="caption">Do not open with Kafka. Open with requirements and numbers.</p>
+
+    <h2>Building blocks</h2>
+    <div class="def"><strong>Stateless app</strong> No session in process memory — scale by adding instances behind a load balancer.</div>
+    <div class="def"><strong>Cache</strong> Fast copy of hot data. Cache-aside is the default. Watch stampede and TTL.</div>
+    <div class="def"><strong>Queue / stream</strong> Async work. At-least-once → idempotent consumers.</div>
+    <div class="def"><strong>Shard</strong> Split data by key to scale writes. Hot keys need special handling.</div>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Client --> CDN
+  CDN --> LB
+  LB --> App["Stateless app"]
+  App --> Cache
+  App --> DB["Primary + replicas"]
+  App --> Q["Queue"]
+  Q --> Workers
+  App --> S3["Object store"]
+    </pre></div>
+    <p class="caption">Memorize this skeleton. Then zoom into the bottleneck.</p>
+
+    <h2>CAP and consistency</h2>
+    <p>Under partition you lean CP (refuse some ops) or AP (serve possibly stale). Say which feature needs strong consistency (payments, pass/fail) vs eventual (click counts).</p>
+
+    <h2>Estimation habit</h2>
+    <div class="def"><strong>Method</strong> Monthly events → QPS. Peak ≈ 3–5× average. Storage = rows × bytes. Machines ≈ peak QPS / QPS-per-box. State assumptions.</div>
+
+    <h2>Classic prompts</h2>
+    <p>URL shortener, rate limiter, notifications, feed, chat, ride matching. SDET: see Automation design.</p>
+    <footer>
+      Full text <a href="NOTES.md">NOTES.md</a> ·
+      <a href="LLD.html">LLD</a> ·
+      <a href="AUTOMATION-DESIGN.html">Automation</a> ·
+      <a href="../../index.html">Index</a>
+    </footer>
+  </div>
+</body>
+</html>

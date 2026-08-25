@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Big-O and complexity</title>
+  <link rel="stylesheet" href="../docs/html/theme.css" />
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="../index.html">All notes</a>
+      <a href="NOTES.md">Markdown</a>
+      <a href="../03-dsa-patterns/NOTES.html">Next: patterns</a>
+    </nav>
+    <p class="pill">Theory</p>
+    <h1>How to calculate time and space</h1>
+    <p class="lead">Interviewers want a reasonable approach, an analysis of what you wrote, and an upgrade when n grows.</p>
+
+    <h2>Notation</h2>
+    <div class="def"><strong>Big-O</strong> Upper bound — “at most this growth.” Default interview answer = worst-case time.</div>
+    <div class="def"><strong>Omega Ω</strong> Lower bound — “at least.”</div>
+    <div class="def"><strong>Theta Θ</strong> Tight bound — both O and Ω.</div>
+    <p>Drop constants and lower-order terms. n → ∞.</p>
+    <div class="diagram"><pre class="mermaid">
+flowchart LR
+  A["O1"] --> B["O log n"]
+  B --> C["O n"]
+  C --> D["O n log n"]
+  D --> E["O n2"]
+  E --> F["O 2n"]
+    </pre></div>
+    <p class="caption">Faster (left) to slower (right) for large n.</p>
+
+    <h2>Time — recipe</h2>
+    <ol>
+      <li>Name n (length, nodes, edges).</li>
+      <li>Count loops, recursion, and how the size shrinks.</li>
+      <li>Keep the dominant term.</li>
+    </ol>
+    <table>
+      <tr><th>Shape</th><th>Time</th></tr>
+      <tr><td>Nested loops both to n</td><td>O(n²)</td></tr>
+      <tr><td>Two loops one after another</td><td>O(n)</td></tr>
+      <tr><td>Halve n each step</td><td>O(log n)</td></tr>
+      <tr><td>Visit each tree/graph node once</td><td>O(n) or O(V+E)</td></tr>
+      <tr><td>fib without memo</td><td>O(2ⁿ)</td></tr>
+      <tr><td>Merge sort</td><td>O(n log n)</td></tr>
+    </table>
+    <div class="diagram"><pre class="mermaid">
+flowchart TB
+  Merge["merge sort"] --> Half["split n/2"]
+  Half --> Recurse["log n levels"]
+  Recurse --> Work["n work per level"]
+  Work --> Total["O n log n"]
+    </pre></div>
+
+    <h2>Hidden costs</h2>
+    <table>
+      <tr><th>Code</th><th>Actual</th></tr>
+      <tr><td>Arrays.sort</td><td>O(n log n)</td></tr>
+      <tr><td>ArrayList.contains</td><td>O(n)</td></tr>
+      <tr><td>HashMap.get</td><td>O(1) average</td></tr>
+      <tr><td>TreeSet.contains</td><td>O(log n)</td></tr>
+      <tr><td>String += in a loop</td><td>O(n²)</td></tr>
+    </table>
+
+    <h2>Space</h2>
+    <div class="def"><strong>Auxiliary space</strong> Extra memory your algorithm allocates, not counting the input unless they ask “total space.”</div>
+    <table>
+      <tr><th>Pattern</th><th>Extra space</th></tr>
+      <tr><td>Few variables, two pointers</td><td>O(1)</td></tr>
+      <tr><td>HashMap of n keys</td><td>O(n)</td></tr>
+      <tr><td>Recursion depth d</td><td>O(d) stack</td></tr>
+      <tr><td>BFS queue width w</td><td>O(w)</td></tr>
+    </table>
+    <p>Two Sum map: O(n) time, O(n) space. Sorted two pointers: O(n) time, O(1) space.</p>
+
+    <h2>Interview script</h2>
+    <ol>
+      <li>Brute force and its complexity.</li>
+      <li>Optimized approach and complexity.</li>
+      <li>Trade-off (time vs space).</li>
+      <li>Walk a tiny example.</li>
+    </ol>
+    <p>On every solution comment: Time, Space, Why.</p>
+    <footer>Source <a href="NOTES.md">NOTES.md</a> · <a href="../03-dsa-patterns/NOTES.html">Patterns</a> · <a href="../index.html">All notes</a></footer>
+  </div>
+</body>
+</html>
