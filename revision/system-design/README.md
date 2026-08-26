@@ -9,3 +9,5 @@
 | [INTERVIEW-QA.md](INTERVIEW-QA.md) | FAANG + SDET Q&A | — |
 
 **Study order:** NOTES → LLD → AUTOMATION-DESIGN → PRACTICE (C1 first) → INTERVIEW-QA aloud.
+
+**Pair with:** [../test-platform/README.md](../test-platform/README.md) · [../distributed-systems/README.md](../distributed-systems/README.md) · [../quality-engineering/README.md](../quality-engineering/README.md) · [../lead-sdet/README.md](../lead-sdet/README.md)

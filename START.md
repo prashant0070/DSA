@@ -1,81 +1,44 @@
-# Start here — Day 1
+# Start here
 
-**Current phase:** [01-linear-structures](01-linear-structures/NOTES.md)
+**Current default path:** finish the coding base first, while using the new revision tracks as targeted depth.
 
-You said **start** — follow this order today.
+## First priority
 
----
+1. [00-oop-foundations/](00-oop-foundations/)
+2. [01-java-fundamentals/](01-java-fundamentals/)
+3. [02-complexity/](02-complexity/)
+4. [03-dsa-patterns/](03-dsa-patterns/)
+5. [practice/easy/](practice/easy/README.md)
+6. [practice/medium/](practice/medium/README.md)
 
-## Step 1 (30 min) — Phase 0 check
+## Add in parallel after the base starts moving
 
-If not done yet:
+- [practice/production-java/](practice/production-java/README.md)
+- [revision/java-engineering/](revision/java-engineering/README.md)
+- [revision/debugging/](revision/debugging/README.md)
+- [revision/sql/](revision/sql/)
+- [revision/framework-design/](revision/framework-design/)
 
-```bash
-cd 00-oop-foundations
-javac -d out src/dsa/foundations/*.java problems/dsa/foundations/problems/*.java
-java -cp out dsa.foundations.Demo
-```
+## Once medium coding is comfortable
 
-Skim [00-oop-foundations/NOTES.md](00-oop-foundations/NOTES.md) sections 1–5.
+Go deeper into:
 
----
+- [revision/distributed-systems/](revision/distributed-systems/README.md)
+- [revision/networking/](revision/networking/README.md)
+- [revision/observability/](revision/observability/README.md)
+- [revision/security/](revision/security/README.md)
+- [revision/test-platform/](revision/test-platform/README.md)
+- [revision/system-design/](revision/system-design/)
 
-## Step 2 (20 min) — Complexity
+## For company and level targeting
 
-Read [02-complexity/NOTES.md](02-complexity/NOTES.md) sections 1–4.  
-You need this before grading your own solutions.
+- [AMAZON-APPLE-SDET3-CHECKLIST.md](AMAZON-APPLE-SDET3-CHECKLIST.md)
+- [revision/behavioral/LEVEL-EXPECTATIONS.md](revision/behavioral/LEVEL-EXPECTATIONS.md)
+- [revision/behavioral/COMPANY-INTERVIEW-MATRIX.md](revision/behavioral/COMPANY-INTERVIEW-MATRIX.md)
+- [ROADMAP.md](ROADMAP.md)
 
----
+## Rule
 
-## Step 3 (45 min) — Phase 1 structures
+Reading ten advanced folders does not beat solving ten medium problems well.
 
-```bash
-cd 01-linear-structures
-javac -d out src/dsa/linear/*.java problems/dsa/linear/problems/*.java
-java -cp out dsa.linear.Demo
-```
-
-Read in order: `Stack.java` → `ArrayStack` → `LinkedStack` → `ArrayQueue` → `SinglyLinkedList`.
-
-Open [01-linear-structures/NOTES.md](01-linear-structures/NOTES.md).
-
----
-
-## Step 4 (60 min) — Your first implementations
-
-### A. Easy warm-up (open in IDE)
-
-[BestTimeToBuySellStock.java](practice/easy/src/dsa/practice/easy/BestTimeToBuySellStock.java) — running minimum, O(n).
-
-```bash
-cd practice/easy
-javac -d out src/dsa/practice/easy/*.java
-java -cp out dsa.practice.easy.BestTimeToBuySellStock
-```
-
-Implement `maxProfit` until `All checks passed.`
-
-### B. Phase 1 problem 1
-
-Implement [ValidParenthesesWithStack.java](01-linear-structures/problems/dsa/linear/problems/ValidParenthesesWithStack.java) using **`dsa.linear.ArrayStack`**.
-
----
-
-## Step 5 (optional today)
-
-- Phase 1 problem 2: `reverseInPlace()` in `SinglyLinkedList.java`  
-- Phase 1 problem 3: `QueueWithTwoStacks.java`  
-
----
-
-## This week
-
-| Day | Target |
-| --- | --- |
-| 1 | Phase 1 Demo + ValidParenthesesWithStack + BestTimeToBuySellStock |
-| 2 | Reverse list + easy #1–#5 |
-| 3 | QueueWithTwoStacks + easy #6–#14 |
-| 4 | Read [03-dsa-patterns](03-dsa-patterns/NOTES.md) + easy #15–#25 |
-| 5 | [revision/framework-design](revision/framework-design/NOTES.md) §1–2 aloud |
-
-Full map: [CURRICULUM.md](CURRICULUM.md)
+Keep coding as the spine. Use the new domains to remove SDET III / Lead gaps, not to avoid implementation.

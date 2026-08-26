@@ -1,20 +1,61 @@
-# SDET revision library
+# Revision library
 
-Quick **overview notes** + **deep interview Q&A**.
+Revision tracks for technical depth, interview Q&A, architecture, company-specific behavior, and lead-level ownership.
 
-| Track | Folder | Status |
+## Domain index
+
+| Domain | Folder | Why it exists |
 | --- | --- | --- |
-| **Behavioral & leadership (STAR, LPs, Lead)** | [behavioral/](behavioral/) | STAR guide · Leadership · Company · Gaps |
-| **System design (HLD/LLD/Automation)** | [system-design/](system-design/) | NOTES + LLD + automation platforms + practice + HTML |
-| Design patterns | [design-patterns/](design-patterns/) | NOTES + Q&A + Java demos |
-| Framework architecture | [framework-design/](framework-design/) | NOTES + technical + behavioral Q&A |
+| Behavioral | [behavioral/](behavioral/) | STAR, level expectations, company interview styles |
+| Lead SDET | [lead-sdet/](lead-sdet/README.md) | roadmap, metrics, hiring, org ownership |
+| System design | [system-design/](system-design/) | HLD, LLD, automation-platform designs |
+| Test platform | [test-platform/](test-platform/README.md) | scheduler, workers, queue, farm, flakes |
+| Quality engineering | [quality-engineering/](quality-engineering/README.md) | test strategy, gates, metrics, release confidence |
+| Framework design | [framework-design/](framework-design/) | architecture and implementation trade-offs |
 | Automation tools | [automation/](automation/) | Selenium, Playwright, Appium, Rest Assured, Locust |
-| HTTP / REST | [api-http/](api-http/) | NOTES + Q&A |
-| SQL & DB | [sql/](sql/) | NOTES + Q&A |
-| Docker / K8s / AWS | [docker-k8s-aws/](docker-k8s-aws/) | NOTES + Q&A |
-| AI / GenAI SDET | [ai-sdet/](ai-sdet/) | NOTES + **expanded** INTERVIEW-QA (AI automation) |
+| TypeScript + Playwright | [typescript-playwright/](typescript-playwright/README.md) | modern Playwright support language |
+| Java engineering | [java-engineering/](java-engineering/README.md) | JVM, collections, concurrency, memory |
+| API + HTTP | [api-http/](api-http/) | protocol and API-test engineering |
+| SQL + DB | [sql/](sql/) | SQL plus DB internals |
+| Distributed systems | [distributed-systems/](distributed-systems/README.md) | resilience, Kafka, eventual consistency |
+| Networking | [networking/](networking/README.md) | TCP, DNS, TLS, troubleshooting |
+| Observability | [observability/](observability/README.md) | logs, metrics, traces |
+| Security | [security/](security/README.md) | OWASP, auth, secrets, API security |
+| Docker | [docker/](docker/README.md) | image/build/runtime depth |
+| Kubernetes | [kubernetes/](kubernetes/README.md) | deployment and scaling depth |
+| AWS | [aws/](aws/README.md) | cloud services most asked for SDETs |
+| CI/CD | [cicd/](cicd/README.md) | pipeline architecture and release models |
+| Git | [git/](git/README.md) | version-control debugging and recovery |
+| Performance | [performance/](performance/README.md) | latency, throughput, bottlenecks |
+| Debugging | [debugging/](debugging/README.md) | interview debugging scenarios |
+| Design patterns | [design-patterns/](design-patterns/) | pattern recognition and application |
+| AI-SDET | [ai-sdet/](ai-sdet/) | LLM, RAG, agents, evaluation, AI testing |
 
-**Behavioral index:** [revision/behavioral/](revision/behavioral/) — STAR · Leadership · Amazon/Apple · Gaps  
-**Coding:** [00-oop-foundations](../00-oop-foundations/) · [01-java-fundamentals](../01-java-fundamentals/) · [02-complexity](../02-complexity/) · [03-dsa-patterns](../03-dsa-patterns/) · [practice/easy](../practice/easy/) · [practice/medium](../practice/medium/) · [practice/advanced](../practice/advanced/) · [CODING-INTERVIEW-QA](../practice/CODING-INTERVIEW-QA.md) · [AMAZON-APPLE-SDET3-CHECKLIST](../AMAZON-APPLE-SDET3-CHECKLIST.md)
+Each domain folder now includes **NOTES.md** (detailed concepts) and **INTERVIEW-QA.md** (question/answer drill), not only a topic list.
 
-Master map: [CURRICULUM.md](../CURRICULUM.md)
+## How to use revision tracks
+
+1. Pick the domain that matches your current gap.
+2. Read the README for scope and interview expectations.
+3. Link the topic back to a coding, debugging, design, or behavioral exercise.
+4. Revisit the domain during mocks until you can explain it without notes.
+
+## Priority if you target SDET III / Lead
+
+Start with these after the coding base:
+
+- Java engineering
+- Distributed systems
+- Networking
+- Observability
+- Security
+- Quality engineering
+- Test platform
+- System design
+- Leadership / behavioral
+
+## Legacy bundled track
+
+The original `docker-k8s-aws/` track is still useful, but the repo now exposes Docker, Kubernetes, and AWS as separate revision domains so depth is easier to manage.
+
+Master map: [../CURRICULUM.md](../CURRICULUM.md)

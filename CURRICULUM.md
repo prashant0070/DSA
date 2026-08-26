@@ -1,77 +1,78 @@
-# SDET + DSA master curriculum
+# Master curriculum map
 
-**Goal:** Interview-ready for SDET II / Senior SDET / Lead SDET (and optional SDE transition) at product companies.  
-**Method:** Read NOTES → run examples → **you implement** practice stubs → revise with INTERVIEW-QA → behavioral STAR.
-
-**Current focus:** Complete Stage 0–3 (Java, OOP, complexity, DSA) while revising automation tracks in parallel.
-
----
+**Goal:** make this repository a complete, structured preparation system for SDET II, Senior SDET, SDET III, Lead SDET, and SDE-adjacent automation roles.
 
 ## Stage map
 
-| Stage | Folder | Type | Status |
+| Stage | Track | Folder | Outcome |
 | --- | --- | --- | --- |
-| 0 | [00-oop-foundations/](00-oop-foundations/) | Learn + code | NOTES + src + problems |
-| 0b | [00-oop-foundations/ADVANCED.md](00-oop-foundations/ADVANCED.md) | Learn | Advanced OOP + tricky topics |
-| 0c | [00-oop-foundations/INTERVIEW-QA.md](00-oop-foundations/INTERVIEW-QA.md) | Revise | OOP interview Q&A |
-| 1 | [01-java-fundamentals/](01-java-fundamentals/) | Learn + Q&A | [NOTES](01-java-fundamentals/NOTES.md) · [STRINGS](01-java-fundamentals/STRINGS.md) · [COLLECTIONS](01-java-fundamentals/COLLECTIONS.md) · [INTERVIEW-QA](01-java-fundamentals/INTERVIEW-QA.md) |
-| 2 | [02-complexity/](02-complexity/) | Learn | Big-O, time/space, how to calculate |
-| 3 | [03-dsa-patterns/](03-dsa-patterns/) | Learn | Pattern recognition + templates |
-| 4 | [practice/easy/](practice/easy/) | **You code** | 75 easy stubs |
-| 5 | [practice/medium/](practice/medium/) | **You code** | 25 medium stubs |
-| 5b | [practice/advanced/](practice/advanced/) | **You code** | 20 Amazon/Apple SDET III stubs |
-| 5c | [practice/CODING-INTERVIEW-QA.md](practice/CODING-INTERVIEW-QA.md) | Revise | FAANG coding Q&A + pattern map |
-| 5d | [AMAZON-APPLE-SDET3-CHECKLIST.md](AMAZON-APPLE-SDET3-CHECKLIST.md) | Plan | 12-week gap-closure plan |
-| 6 | Phases `01`–`10` linear structures → LLD | Learn + build | Unlocked after Stage 3 |
-| 7 | [revision/design-patterns/](revision/design-patterns/) | Revise | GoF + POM + demos |
-| 8 | [revision/framework-design/](revision/framework-design/) | Revise | FW architecture + behavioral |
-| 8b | [revision/behavioral/](revision/behavioral/) | Revise | STAR guide, Leadership, Company LPs, Gaps |
-| 9 | [revision/automation/](revision/automation/) | Revise | Per-tool deep dives |
-| 10 | [revision/api-http/](revision/api-http/) | Revise | HTTP, REST, auth |
-| 11 | [revision/sql/](revision/sql/) | Revise | SQL + DB internals |
-| 12 | [revision/docker-k8s-aws/](revision/docker-k8s-aws/) | Revise | Platform at interview depth |
-| 13 | [revision/ai-sdet/](revision/ai-sdet/) | Revise | RAG, agents, LLM eval, your AI tool |
-| 14 | [revision/system-design/](revision/system-design/) | Revise + practice | HLD, LLD, automation platforms (FAANG format) |
+| 0 | OOP foundations | [00-oop-foundations/](00-oop-foundations/) | Class design, interfaces, SOLID, object thinking |
+| 1 | Java fundamentals | [01-java-fundamentals/](01-java-fundamentals/) | Strong Java interview base |
+| 2 | Complexity | [02-complexity/](02-complexity/) | Time/space reasoning |
+| 3 | DSA patterns | [03-dsa-patterns/](03-dsa-patterns/) | Pattern-first coding fluency |
+| 4 | Easy coding | [practice/easy/](practice/easy/README.md) | Pattern recognition and confidence |
+| 5 | Medium coding | [practice/medium/](practice/medium/README.md) | Interview core for product companies |
+| 6 | Advanced coding | [practice/advanced/](practice/advanced/README.md) | SDET III / Amazon-style stretch |
+| 7 | Build your own structures | [01-linear-structures/](01-linear-structures/) | Internalize data structures and OOP |
+| 8 | Production Java | [practice/production-java/](practice/production-java/README.md) | Real-world coding beyond LeetCode |
+| 9 | System coding / LLD | [practice/system-coding/](practice/system-coding/README.md) | Test runner, cache, platform objects |
+| 10 | Revision domains | [revision/README.md](revision/README.md) | SDET engineering breadth and depth |
+| 11 | System design | [revision/system-design/](revision/system-design/) | HLD/LLD + SDET platform design |
+| 12 | Behavioral and leadership | [revision/behavioral/](revision/behavioral/) | STAR, leadership, company mapping |
 
----
+## Revision domain map
 
-## Recommended weekly rhythm
-
-| Day | Focus | Time |
+| Domain | Folder | Focus |
 | --- | --- | --- |
-| Mon–Thu | 1–2 DSA problems (implement + run grader) | 90 min |
-| Fri | Re-read one NOTES + one INTERVIEW-QA section aloud | 60 min |
-| Sat | Java/OOP example or revision track (Playwright, SQL, …) | 2 hr |
-| Sun | Mock: 1 coding OR 1 behavioral OR 1 framework whiteboard | 1 hr |
+| Java engineering | [revision/java-engineering/](revision/java-engineering/README.md) | JVM, collections, concurrency, memory, debugging |
+| Design patterns | [revision/design-patterns/](revision/design-patterns/) | Recognize and apply high-value patterns |
+| Framework design | [revision/framework-design/](revision/framework-design/) | Layered automation architecture |
+| Automation tools | [revision/automation/](revision/automation/) | Selenium, Playwright, Appium, Rest Assured, Locust |
+| TypeScript + Playwright | [revision/typescript-playwright/](revision/typescript-playwright/README.md) | TS basics for modern automation |
+| API + HTTP | [revision/api-http/](revision/api-http/) | REST, auth, contracts, async APIs |
+| SQL + DB | [revision/sql/](revision/sql/) | SQL, isolation, indexes, DB internals |
+| Distributed systems | [revision/distributed-systems/](revision/distributed-systems/README.md) | CAP, Kafka, resilience, distributed testing |
+| Networking | [revision/networking/](revision/networking/README.md) | TCP, HTTP, DNS, TLS, troubleshooting |
+| Observability | [revision/observability/](revision/observability/README.md) | logs, metrics, traces, OpenTelemetry |
+| Security | [revision/security/](revision/security/README.md) | OWASP, auth, API security, secrets |
+| Quality engineering | [revision/quality-engineering/](revision/quality-engineering/README.md) | strategy, gates, portfolio, metrics |
+| Test platform | [revision/test-platform/](revision/test-platform/README.md) | scheduler, workers, device farm, flakes |
+| Docker | [revision/docker/](revision/docker/README.md) | images, layers, runtime, security |
+| Kubernetes | [revision/kubernetes/](revision/kubernetes/README.md) | pods, probes, scaling, rollouts |
+| AWS | [revision/aws/](revision/aws/README.md) | core cloud services for SDET interviews |
+| CI/CD | [revision/cicd/](revision/cicd/README.md) | pipeline architecture and release flow |
+| Git | [revision/git/](revision/git/README.md) | rebase, bisect, recovery, conflicts |
+| Performance | [revision/performance/](revision/performance/README.md) | latency, throughput, load-platform thinking |
+| Debugging | [revision/debugging/](revision/debugging/README.md) | Java, UI, API, distributed, CI failures |
+| AI-SDET | [revision/ai-sdet/](revision/ai-sdet/) | LLM, RAG, agents, evaluation |
+| System design | [revision/system-design/](revision/system-design/) | HLD, LLD, SDET platform design |
+| Behavioral | [revision/behavioral/](revision/behavioral/) | STAR, company styles, level map |
+| Lead SDET | [revision/lead-sdet/](revision/lead-sdet/README.md) | org ownership, metrics, roadmap |
 
----
+## Level expectations
 
-## Implementation order (repo build)
+| Area | SDET II | Senior SDET | SDET III | Lead SDET |
+| --- | --- | --- | --- | --- |
+| Coding | easy + medium basics | medium fluency | medium + selected advanced | medium enough to lead credibility |
+| Java | collections, OOP | debugging, internals | concurrency, memory | engineering trade-offs |
+| Framework | use and extend | design a clean framework | design multi-team architecture | define platform direction |
+| System design | basic HLD | runner / grid / CI basics | distributed test platform | org roadmap + trade-offs |
+| Behavioral | 5 good stories | 6–8 stories | 8–10 stories + influence | org-wide leadership and hiring stories |
 
-1. Complexity + DSA patterns (think before grind)  
-2. OOP advanced + Java fundamentals  
-3. Medium practice (interview core)  
-4. Revision: automation tools, API, SQL, platform, AI  
-5. Phases 01–10 (build your own HashMap, Stack, …)  
+## Priority order for this repo
 
----
+1. Coding foundation
+2. Production Java and concurrency
+3. Distributed systems + test platform
+4. Observability + security + debugging
+5. Lead-level strategy and company mapping
 
-## What “full depth” means here
+## Use this repo like a system, not a file dump
 
-| Content | Full depth = |
-| --- | --- |
-| NOTES | Mental model, syntax, complexity, SDET tie-in where relevant |
-| INTERVIEW-QA | Real interview questions with strong answer outlines |
-| practice/ | Stub + LEARN block + self-check `main` — **you write the solution** |
-| src/ | Runnable teaching examples |
+Every topic should eventually provide:
 
-Reference solutions for practice problems are **not** included by default — you implement; ask for hints per problem.
-
----
-
-## Quick links
-
-- [Main README](README.md)  
-- [Revision index](revision/README.md)  
-- [Easy problems table](practice/easy/README.md)  
-- [Medium problems table](practice/medium/README.md)  
+- core notes
+- interview Q&A
+- practice prompts or coding exercises
+- mock guidance
+- level/company relevance

@@ -8,6 +8,8 @@
 | **General behavioral (SDET → Lead)** | [../framework-design/BEHAVIORAL-QA.md](../framework-design/BEHAVIORAL-QA.md) | 40+ questions, Amazon LP map, story bank |
 | **Leadership & management bar** | [LEADERSHIP-QA.md](LEADERSHIP-QA.md) | Lead SDET / manager loop, exec, hiring, org |
 | **Company-specific behavioral** | [COMPANY-BEHAVIORAL-QA.md](COMPANY-BEHAVIORAL-QA.md) | Amazon LPs deep, Apple, Google, Meta |
+| **Company interview matrix** | [COMPANY-INTERVIEW-MATRIX.md](COMPANY-INTERVIEW-MATRIX.md) | What Amazon, Apple, Google, Meta, Microsoft emphasize by level |
+| **Level expectations** | [LEVEL-EXPECTATIONS.md](LEVEL-EXPECTATIONS.md) | What changes from SDET II to SDET III to Lead |
 | **AI / GenAI automation Q&A** | [../ai-sdet/INTERVIEW-QA.md](../ai-sdet/INTERVIEW-QA.md) | RAG, agents, AI test gen, eval platform |
 | **Framework technical whiteboard** | [../framework-design/INTERVIEW-QA.md](../framework-design/INTERVIEW-QA.md) | Design framework, parallel, flake |
 | **System design** | [../system-design/INTERVIEW-QA.md](../system-design/INTERVIEW-QA.md) | HLD/LLD, test platforms |
@@ -22,6 +24,8 @@
 | STAR format | Mentioned in BEHAVIORAL-QA | **STAR-GUIDE** with full worked examples |
 | Leadership (Lead SDET) | ~10 questions in BEHAVIORAL-QA | **LEADERSHIP-QA** dedicated file |
 | Amazon LP deep dives | Table + prompts | **COMPANY-BEHAVIORAL-QA** per LP + Apple/Google |
+| Company loop expectations | Scattered | **COMPANY-INTERVIEW-MATRIX** by company and level |
+| SDET II vs III vs Lead bar | Implied | **LEVEL-EXPECTATIONS** explicit calibration |
 | AI automation Q&A | ~10 short bullets | **Expanded ai-sdet INTERVIEW-QA** (40+ questions) |
 | CI/CD behavioral | Scattered | **LEADERSHIP-QA** + **COMPANY-BEHAVIORAL-QA** |
 | Performance / security / a11y | Tool notes only | **GAPS-QA.md** quick hits |
@@ -31,10 +35,11 @@
 ## Recommended study order
 
 1. Write **8–10 stories** using [STAR-GUIDE.md](STAR-GUIDE.md) template  
-2. Map stories to [COMPANY-BEHAVIORAL-QA.md](COMPANY-BEHAVIORAL-QA.md) (Amazon) or Apple section  
-3. Rehearse [BEHAVIORAL-QA.md](../framework-design/BEHAVIORAL-QA.md) questions aloud  
-4. If **Lead** loop: add [LEADERSHIP-QA.md](LEADERSHIP-QA.md)  
-5. If **AI** angle: [ai-sdet INTERVIEW-QA](../ai-sdet/INTERVIEW-QA.md) + your project pitch  
+2. Read [LEVEL-EXPECTATIONS.md](LEVEL-EXPECTATIONS.md) so you answer at the correct seniority bar  
+3. Map stories to [COMPANY-BEHAVIORAL-QA.md](COMPANY-BEHAVIORAL-QA.md) and [COMPANY-INTERVIEW-MATRIX.md](COMPANY-INTERVIEW-MATRIX.md)  
+4. Rehearse [BEHAVIORAL-QA.md](../framework-design/BEHAVIORAL-QA.md) questions aloud  
+5. If **Lead** loop: add [LEADERSHIP-QA.md](LEADERSHIP-QA.md)  
+6. If **AI** angle: [ai-sdet INTERVIEW-QA](../ai-sdet/INTERVIEW-QA.md) + your project pitch  
 
 **Plan:** [AMAZON-APPLE-SDET3-CHECKLIST.md](../../AMAZON-APPLE-SDET3-CHECKLIST.md) Weeks 1–12 behavioral column.
 
