@@ -63,6 +63,16 @@ This repo is intended to be your **primary interview preparation system** for:
 | Production Java | [practice/production-java/](practice/production-java/README.md) | Retry, cache, runner, scheduler, client |
 | System coding | [practice/system-coding/](practice/system-coding/README.md) | SDET LLD and AI/platform coding |
 
+### Interview question bank (answer-first)
+
+| Track | Folder | Purpose |
+| --- | --- | --- |
+| Full Q&A bank | [question-bank/](question-bank/README.md) | 417 detailed Q&A: TypeScript, Playwright, CI/CD (Jenkins/GHA/Docker), lead & architecture, AI in QA |
+| TypeScript | [question-bank/typescript/](question-bank/typescript/) | TS fundamentals, async/promises, coding rounds |
+| Playwright | [question-bank/playwright/](question-bank/playwright/) | 16 files: fundamentals → locators → fixtures → parallel/sharding → flaky tests → worked scenarios |
+| CI/CD | [question-bank/cicd/](question-bank/cicd/) | Jenkins deep dive, GitHub Actions, Docker, reporting/artifacts |
+| Lead / architecture | [question-bank/architecture-lead/](question-bank/architecture-lead/) | Framework architecture, test data, environments/secrets, strategy, scaling, AI/MCP |
+
 ### Revision and interview domains
 
 | Domain | Folder |
