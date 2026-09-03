@@ -12,6 +12,7 @@ This repo is intended to be your **primary interview preparation system** for:
 
 **Language for coding interviews:** Java 17+  
 **Automation support languages:** TypeScript, Python  
+**Academy website:** open [index.html](index.html) after `python3 -m http.server 8080` — learn tracks, coding practice, compiler, DSA visualizers, quiz.  
 **Master map:** [CURRICULUM.md](CURRICULUM.md)  
 **Roadmap:** [ROADMAP.md](ROADMAP.md)  
 **Start here today:** [START.md](START.md)
@@ -67,11 +68,20 @@ This repo is intended to be your **primary interview preparation system** for:
 
 | Track | Folder | Purpose |
 | --- | --- | --- |
-| Full Q&A bank | [question-bank/](question-bank/README.md) | 417 detailed Q&A: TypeScript, Playwright, CI/CD (Jenkins/GHA/Docker), lead & architecture, AI in QA |
+| Full Q&A bank | [question-bank/](question-bank/README.md) | 941 detailed Q&A across 12 tracks |
+| Academy website | [index.html](index.html) · [web/](web/README.md) | Scaler-style UI: learn, practice, compiler, visualizers, quiz |
 | TypeScript | [question-bank/typescript/](question-bank/typescript/) | TS fundamentals, async/promises, coding rounds |
-| Playwright | [question-bank/playwright/](question-bank/playwright/) | 16 files: fundamentals → locators → fixtures → parallel/sharding → flaky tests → worked scenarios |
-| CI/CD | [question-bank/cicd/](question-bank/cicd/) | Jenkins deep dive, GitHub Actions, Docker, reporting/artifacts |
-| Lead / architecture | [question-bank/architecture-lead/](question-bank/architecture-lead/) | Framework architecture, test data, environments/secrets, strategy, scaling, AI/MCP |
+| Java | [question-bank/java/](question-bank/java/) | OOP, collections, JVM, concurrency/ThreadLocal, streams, coding |
+| Playwright | [question-bank/playwright/](question-bank/playwright/) | 16 files: fundamentals → locators → fixtures → parallel/sharding → flaky tests → scenarios |
+| Selenium | [question-bank/selenium/](question-bank/selenium/) | Selenium 4, waits, Grid, ThreadLocal, TestNG, framework design |
+| Appium | [question-bank/appium/](question-bank/appium/) | Appium 2.x, gestures, Android/iOS, device farms |
+| Rest Assured | [question-bank/rest-assured/](question-bank/rest-assured/) | HTTP/REST, RA 5.x, auth, contract, API+UI |
+| Design patterns | [question-bank/design-patterns/](question-bank/design-patterns/) | SOLID + GoF with Java automation examples |
+| CI/CD | [question-bank/cicd/](question-bank/cicd/) | Jenkins, GitHub Actions, Docker, reporting |
+| DevOps / cloud | [question-bank/devops-cloud/](question-bank/devops-cloud/) | Docker internals, K8s test jobs, AWS, Jenkins platform |
+| Lead / architecture | [question-bank/architecture-lead/](question-bank/architecture-lead/) | Framework architecture, data, envs, strategy, scaling |
+| AI · LLM · RAG | [question-bank/ai-llm/](question-bank/ai-llm/) | LLM internals, RAG eval, agents/MCP, AI-SDET practice |
+| Behavioral (STAR) | [question-bank/behavioral/](question-bank/behavioral/) | Core stories, Amazon LPs, company loops, lead stories |
 
 ### Revision and interview domains
 

@@ -1,5 +1,7 @@
 # Start here
 
+**Academy website (recommended):** from the repo root run `python3 -m http.server 8080` and open http://localhost:8080 — learn tracks, coding practice with a compiler, DSA visualizers, quiz.
+
 **Current default path:** finish the coding base first, while using the new revision tracks as targeted depth.
 
 ## First priority

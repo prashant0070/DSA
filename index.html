@@ -3,58 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DSA notes in the browser</title>
-  <link rel="stylesheet" href="docs/html/theme.css" />
+  <meta name="description" content="SDET Academy — interview-grade tracks for Java, Selenium, Appium, API testing, design patterns, and behavioral stories. Learn, practice, and quiz in a Scaler-style academy." />
+  <title>SDET Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css" />
+  <link rel="stylesheet" href="web/css/app.css" />
+  <style>
+    #boot-splash {
+      position: fixed; inset: 0; z-index: 9999;
+      display: grid; place-items: center;
+      background: #0b1020; color: #93a0b8;
+      font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    #boot-splash[hidden] { display: none; }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="pill">Open locally</p>
-    <h1>DSA study notes (HTML)</h1>
-    <p class="lead">Each Markdown notes file has a matching HTML page with diagrams and definitions. Double-click a file, or start here. Needs internet once for the diagram library (Mermaid).</p>
+  <div id="boot-splash">Loading academy…</div>
 
-    <div class="card"><h3>DSA practice</h3><p>Easy → medium → advanced stubs + FAANG coding Q&amp;A.</p>
-      <a href="practice/easy/README.md">Easy (75)</a> ·
-      <a href="practice/medium/README.md">Medium (25)</a> ·
-      <a href="practice/advanced/README.md">Advanced (20)</a> ·
-      <a href="practice/CODING-INTERVIEW-QA.md">Coding Q&amp;A</a>
+  <div id="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/">
+        <span class="brand-mark">SA</span>
+        <span class="brand-text">SDET Academy</span>
+      </a>
+      <nav class="side-nav" id="side-nav"></nav>
+      <div class="side-progress" id="side-progress"></div>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+        <div class="crumbs" id="crumbs"></div>
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Search topics, questions, problems…" autocomplete="off" />
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+        <div class="top-actions">
+          <span class="pill" id="progress-pill">0% done</span>
+        </div>
+      </header>
+      <div class="view" id="view"></div>
     </div>
-    <div class="card"><h3>Amazon / Apple SDET III+ plan</h3><p>12-week checklist: coding, design, behavioral.</p>
-      <a href="AMAZON-APPLE-SDET3-CHECKLIST.md">Open checklist</a>
-    </div>
-    <div class="card"><h3>Behavioral &amp; leadership Q&amp;A</h3><p>STAR examples, Amazon LPs, Lead SDET, AI behavioral.</p>
-      <a href="revision/behavioral/STAR-GUIDE.md">STAR guide</a> ·
-      <a href="revision/behavioral/LEADERSHIP-QA.md">Leadership</a> ·
-      <a href="revision/behavioral/COMPANY-BEHAVIORAL-QA.md">Amazon/Apple</a> ·
-      <a href="revision/ai-sdet/INTERVIEW-QA.md">AI automation Q&amp;A</a>
-    </div>
-
-    <h2>Learn</h2>
-    <div class="card"><h3>Phase 0 — OOP foundations</h3><p>Class vs object, encapsulation, inheritance, polymorphism, generics, equals/hashCode, SOLID.</p><a href="00-oop-foundations/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>Java fundamentals</h3><p>Types, exceptions, streams — plus deep Strings, Collections, and Interview Q&amp;A.</p>
-      <a href="01-java-fundamentals/NOTES.html">Hub</a> ·
-      <a href="01-java-fundamentals/STRINGS.html">Strings</a> ·
-      <a href="01-java-fundamentals/COLLECTIONS.html">Collections</a> ·
-      <a href="01-java-fundamentals/INTERVIEW-QA.html">Interview Q&amp;A</a>
-    </div>
-    <div class="card"><h3>Phase 1 — Linear structures</h3><p>Dynamic array, linked list, stack, queue — as classes.</p><a href="01-linear-structures/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>Big-O and complexity</h3><p>How to count time and space, notation, cheat sheet.</p><a href="02-complexity/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>DSA patterns</h3><p>Two pointers, sliding window, hashing, BFS/DFS, DP, backtracking.</p><a href="03-dsa-patterns/NOTES.html">Open NOTES.html</a></div>
-
-    <h2>SDET revision</h2>
-    <div class="card"><h3>System design — HLD / LLD / Automation</h3><p>FAANG clock, building blocks, test platforms, device farm, practice prompts.</p>
-      <a href="revision/system-design/NOTES.html">HLD</a> ·
-      <a href="revision/system-design/LLD.html">LLD</a> ·
-      <a href="revision/system-design/AUTOMATION-DESIGN.html">Automation</a> ·
-      <a href="revision/system-design/PRACTICE.html">Practice</a>
-    </div>
-    <div class="card"><h3>Design patterns</h3><p>GoF + POM + Strategy/Factory for test frameworks.</p><a href="revision/design-patterns/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>Framework architecture</h3><p>Layered automation for web, mobile, API, load.</p><a href="revision/framework-design/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>HTTP &amp; REST</h3><p>Methods, status codes, auth.</p><a href="revision/api-http/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>SQL</h3><p>JOINs, indexes, ACID, window functions.</p><a href="revision/sql/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>Docker, Kubernetes, AWS</h3><p>Containers and cloud at interview depth.</p><a href="revision/docker-k8s-aws/NOTES.html">Open NOTES.html</a></div>
-    <div class="card"><h3>AI / GenAI SDET</h3><p>RAG, agents, LLM evaluation.</p><a href="revision/ai-sdet/NOTES.html">Open NOTES.html</a></div>
-
-    <footer>Markdown originals stay as NOTES.md for GitHub. HTML is for browser study. Start coding from <a href="START.md">START.md</a>.</footer>
   </div>
+
+  <noscript>
+    <div class="noscript">
+      JavaScript is required to run SDET Academy. Enable it in your browser, then reload this page.
+    </div>
+  </noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@13.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+  <script src="web/js/catalog.js"></script>
+  <script src="web/js/problems.js"></script>
+  <script src="web/js/progress.js"></script>
+  <script src="web/js/visualizers.js"></script>
+  <script src="web/js/learn.js"></script>
+  <script src="web/js/practice.js"></script>
+  <script src="web/js/quiz.js"></script>
+  <script src="web/js/app.js"></script>
 </body>
 </html>
