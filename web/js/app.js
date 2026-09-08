@@ -189,14 +189,14 @@
     if (sideProg && global.Progress) {
       var pct = Progress.percent();
       sideProg.innerHTML =
-        '<div>Academy progress</div>' +
+        '<div>Academy XP</div>' +
         '<div class="bar"><span style="width:' + pct + '%"></span></div>' +
-        '<div style="margin-top:6px">' + pct + '% complete</div>';
+        '<div style="margin-top:6px">' + pct + '% filled</div>';
     }
 
     var pill = $('progress-pill');
     if (pill && global.Progress) {
-      pill.textContent = Progress.percent() + '% done';
+      pill.textContent = Progress.percent() + '% XP';
     }
   }
 
@@ -289,18 +289,22 @@
         if (Progress.problemStatus(problemId(p)) === 'solved') solved += 1;
       });
     }
+    var vibe = global.Vibe || {};
+    var tagline = typeof vibe.tagline === 'function' ? vibe.tagline() : 'Interview gym. Not a PDF graveyard.';
+    var ticker = typeof vibe.tickerHtml === 'function' ? vibe.tickerHtml() : '';
+    var daily = typeof vibe.dailyProblem === 'function' ? vibe.dailyProblem(problems) : (problems[0] || null);
 
-    var continueTitle = hasLast ? (last.title || 'Pick up where you left off') : 'Playwright · Fundamentals & Architecture';
+    var continueTitle = hasLast ? (last.title || 'Pick up where you left off') : 'Playwright · Fundamentals';
     var continueRoute = hasLast ? last.route : '#/learn/playwright/01-fundamentals-and-architecture';
-    var continueKicker = hasLast ? 'Continue learning' : 'Start here';
+    var continueKicker = hasLast ? 'You were here' : 'First run';
     var continueBlurb = hasLast
-      ? 'Resume the last lesson or problem you opened.'
-      : 'The highest-leverage web-automation track. Sixteen lessons, architecture first.';
+      ? 'Jump back in. Momentum beats rereading the same chapter.'
+      : 'Highest-leverage track: sixteen Playwright lessons, architecture first.';
 
     var cards = tracks.map(function (t) {
       var p = trackProgress(t);
       return (
-        '<a class="track-card" href="#/learn/' + esc(t.id) + '">' +
+        '<a class="track-card" href="#/learn/' + esc(t.id) + '" style="--track:' + t.color + '">' +
           '<span class="track-icon" style="background:' + t.color + '22;border-color:' + t.color +
             '66;color:' + t.color + '">' + esc(t.icon) + '</span>' +
           '<div>' +
@@ -309,42 +313,72 @@
           '</div>' +
           '<div class="track-meta">' + p.done + ' / ' + p.total + ' lessons · ' + p.pct + '%</div>' +
           '<div class="progress-bar"><span class="progress-fill" style="width:' + p.pct +
-            '%;background:linear-gradient(90deg,' + t.color + ',#ff9448)"></span></div>' +
+            '%;background:linear-gradient(90deg,' + t.color + ',#ff4fa3)"></span></div>' +
         '</a>'
       );
     }).join('');
 
+    var dailyBlock = daily
+      ? ('<a class="daily-card" href="#/practice/' + esc(problemId(daily)) + '">' +
+           '<div class="daily-kicker">Today\'s boss fight</div>' +
+           '<h3>' + esc(problemTitle(daily)) + '</h3>' +
+           '<p>' + esc((daily.pattern || daily.topic || 'coding') + ' · ' + (daily.difficulty || 'easy')) + '</p>' +
+           '<span class="btn btn-primary">Open in compiler</span>' +
+         '</a>')
+      : '';
+
     el.innerHTML =
-      '<section class="hero">' +
-        '<p class="pill">Structured interview academy</p>' +
-        '<h1>Master SDET interviews like a structured academy</h1>' +
-        '<p>Interview-grade tracks for Java, Playwright, Selenium, API, CI/CD, architecture, and STAR stories. Learn in order, practice on a compiler, quiz yourself, and watch the algorithms move.</p>' +
-        '<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1">' +
-          '<a class="btn btn-primary" href="#/practice">Start Practice</a>' +
-          '<a class="btn" href="#/learn/playwright">Learn Playwright</a>' +
-          '<a class="btn btn-ghost" href="#/quiz">Open Quiz</a>' +
-        '</p>' +
+      ticker +
+      '<section class="hero hero-fun">' +
+        '<div class="hero-copy">' +
+          '<p class="pill pill-live"><span class="pulse-dot"></span> Interview gym is open</p>' +
+          '<h1>Make the loop <span class="grad-text">feel like a game</span></h1>' +
+          '<p class="lede">' + esc(tagline) + '</p>' +
+          '<p class="hero-sub">Learn tracks, a live compiler, step-through visualizers, and STAR stories — built so you actually want to open it again tomorrow.</p>' +
+          '<p class="hero-actions">' +
+            '<a class="btn btn-primary" href="#/practice">Fight a problem</a>' +
+            '<a class="btn" href="#/visualize">Watch an algorithm</a>' +
+            '<a class="btn btn-ghost" href="#/quiz">Pop quiz</a>' +
+          '</p>' +
+        '</div>' +
+        '<div class="hero-orb" aria-hidden="true">' +
+          '<div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div>' +
+          '<div class="hero-chip">Java</div>' +
+          '<div class="hero-chip chip-2">Playwright</div>' +
+          '<div class="hero-chip chip-3">STAR</div>' +
+        '</div>' +
       '</section>' +
 
-      '<div class="track-grid" style="margin-bottom:22px">' +
-        '<div class="card"><div class="track-meta">Academy progress</div><h3 style="margin:6px 0 0">' + pct + '%</h3></div>' +
-        '<div class="card"><div class="track-meta">Lessons complete</div><h3 style="margin:6px 0 0">' + lessonDone + ' / ' + lessonTotal + '</h3></div>' +
-        '<div class="card"><div class="track-meta">Problems solved</div><h3 style="margin:6px 0 0">' + solved + ' / ' + (problems.length || 0) + '</h3></div>' +
-        '<div class="card"><div class="track-meta">Tracks started</div><h3 style="margin:6px 0 0">' + tracksStarted + ' / ' + tracks.length + '</h3></div>' +
+      '<div class="mode-grid">' +
+        '<a class="mode-card mode-learn" href="#/learn"><span class="mode-kicker">01</span><h3>Learn it</h3><p>941 interview answers with traps, not definitions.</p></a>' +
+        '<a class="mode-card mode-code" href="#/practice"><span class="mode-kicker">02</span><h3>Break it</h3><p>Monaco + tests. Java in the cloud, JS instantly.</p></a>' +
+        '<a class="mode-card mode-viz" href="#/visualize"><span class="mode-kicker">03</span><h3>Watch it</h3><p>Pointers move. Windows slide. Graphs light up.</p></a>' +
+        '<a class="mode-card mode-quiz" href="#/quiz"><span class="mode-kicker">04</span><h3>Quiz it</h3><p>Hide the answer. Say it out loud. Then reveal.</p></a>' +
+        '<a class="mode-card mode-run" href="#/compiler"><span class="mode-kicker">05</span><h3>Just run it</h3><p>Scratchpad compiler. Java, JS, or Python.</p></a>' +
       '</div>' +
 
-      '<div class="continue-card">' +
-        '<div>' +
-          '<p class="track-meta">' + esc(continueKicker) + '</p>' +
-          '<h3>' + esc(continueTitle) + '</h3>' +
-          '<p>' + esc(continueBlurb) + '</p>' +
+      '<div class="stat-row">' +
+        '<div class="stat-orb"><span class="stat-n">' + pct + '%</span><span>XP filled</span></div>' +
+        '<div class="stat-orb"><span class="stat-n">' + lessonDone + '<small>/' + lessonTotal + '</small></span><span>Lessons cleared</span></div>' +
+        '<div class="stat-orb"><span class="stat-n">' + solved + '<small>/' + (problems.length || 0) + '</small></span><span>Bosses down</span></div>' +
+        '<div class="stat-orb"><span class="stat-n">' + tracksStarted + '<small>/' + tracks.length + '</small></span><span>Worlds started</span></div>' +
+      '</div>' +
+
+      '<div class="lobby-split">' +
+        '<div class="continue-card continue-glow">' +
+          '<div>' +
+            '<p class="track-meta">' + esc(continueKicker) + '</p>' +
+            '<h3>' + esc(continueTitle) + '</h3>' +
+            '<p>' + esc(continueBlurb) + '</p>' +
+          '</div>' +
+          '<a class="btn btn-primary" href="' + esc(continueRoute) + '">Continue</a>' +
         '</div>' +
-        '<a class="btn btn-primary" href="' + esc(continueRoute) + '">Continue</a>' +
+        dailyBlock +
       '</div>' +
 
       '<div class="section-title">' +
-        '<h2>Learning paths</h2>' +
-        '<span class="track-meta">' + tracks.length + ' tracks</span>' +
+        '<h2>Pick a world</h2>' +
+        '<span class="track-meta">' + tracks.length + ' tracks · hover them, they glow</span>' +
       '</div>' +
       '<div class="track-grid">' + cards + '</div>';
   }
@@ -653,6 +687,7 @@
     hideSplash();
     var view = $('view');
     if (view) view.scrollTop = 0;
+    if (global.Vibe && typeof Vibe.enter === 'function') Vibe.enter(view);
   }
 
   function go(hash) {

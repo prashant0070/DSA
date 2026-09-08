@@ -7,28 +7,48 @@
   <title>SDET Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css" />
   <link rel="stylesheet" href="web/css/app.css" />
   <style>
     #boot-splash {
       position: fixed; inset: 0; z-index: 9999;
-      display: grid; place-items: center;
-      background: #0b1020; color: #93a0b8;
+      display: grid; place-items: center; gap: 14px;
+      background:
+        radial-gradient(800px 400px at 20% 20%, rgba(255, 79, 163, 0.22), transparent 55%),
+        radial-gradient(700px 380px at 80% 80%, rgba(88, 101, 242, 0.28), transparent 50%),
+        #070b18;
+      color: #e8eefc;
       font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
-      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
     }
+    #boot-splash .boot-mark {
+      width: 64px; height: 64px; display: grid; place-items: center;
+      border-radius: 18px; font-weight: 800; font-size: 22px; color: #1a0d05;
+      background: linear-gradient(145deg, #ff7a32, #ff4fa3);
+      box-shadow: 0 0 0 8px rgba(255, 122, 50, 0.18), 0 20px 50px rgba(255, 79, 163, 0.35);
+      animation: boot-pop 0.9s ease-in-out infinite alternate;
+    }
+    #boot-splash .boot-copy {
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #9aa8c7;
+    }
+    @keyframes boot-pop { from { transform: translateY(0) scale(1); } to { transform: translateY(-6px) scale(1.05); } }
     #boot-splash[hidden] { display: none; }
   </style>
 </head>
 <body>
-  <div id="boot-splash">Loading academy…</div>
+  <div id="boot-splash">
+    <div class="boot-mark">SA</div>
+    <div class="boot-copy">Warming up the interview gym</div>
+  </div>
 
   <div id="app">
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="#/">
         <span class="brand-mark">SA</span>
-        <span class="brand-text">SDET Academy</span>
+        <span>
+          <span class="brand-text">SDET Academy</span>
+          <span class="brand-live">live lobby</span>
+        </span>
       </a>
       <nav class="side-nav" id="side-nav"></nav>
       <div class="side-progress" id="side-progress"></div>
@@ -38,7 +58,7 @@
         <button class="icon-btn" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
         <div class="crumbs" id="crumbs"></div>
         <div class="search-wrap">
-          <input id="search" type="search" placeholder="Search topics, questions, problems…" autocomplete="off" />
+          <input id="search" type="search" placeholder="Search ThreadLocal, two-sum, STAR…" autocomplete="off" />
           <div class="search-results" id="search-results" hidden></div>
         </div>
         <div class="top-actions">
@@ -66,6 +86,7 @@
   <script src="web/js/learn.js"></script>
   <script src="web/js/practice.js"></script>
   <script src="web/js/quiz.js"></script>
+  <script src="web/js/vibe.js"></script>
   <script src="web/js/app.js"></script>
 </body>
 </html>

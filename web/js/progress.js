@@ -136,8 +136,10 @@
     },
 
     markLesson: function (trackId, file) {
+      var already = !!cache.lessonsDone[lessonKey(trackId, file)];
       cache.lessonsDone[lessonKey(trackId, file)] = true;
       writeStore(cache);
+      if (!already && global.Vibe && typeof Vibe.celebrate === 'function') Vibe.celebrate();
       return clone(cache);
     },
 
@@ -147,11 +149,16 @@
 
     markProblem: function (id, status) {
       if (!id) return clone(cache);
+      var next = status || 'solved';
+      var was = cache.problems[id] && cache.problems[id].status;
       cache.problems[id] = {
-        status: status || 'solved',
+        status: next,
         ts: Date.now(),
       };
       writeStore(cache);
+      if (next === 'solved' && was !== 'solved' && global.Vibe && typeof Vibe.celebrate === 'function') {
+        Vibe.celebrate();
+      }
       return clone(cache);
     },
 
